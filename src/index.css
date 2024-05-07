@@ -16,6 +16,7 @@
 	--on-primary-color: black;
 	--secondary-color: gray;
 	--background-color: black;
+	--background-alt-color: DarkSlateGrey;
 	--accent-color: blue;
 	--text-color: white;
 	--success-color: green;
@@ -50,6 +51,7 @@ h1 {
 		--on-primary-color: white;
 		--secondary-color: gray;
 		--background-color: white;
+		--background-alt-color: lightgray;
 		--accent-color: blue;
 		--text-color: black;
 		--success-color: green;

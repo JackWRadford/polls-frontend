@@ -9,6 +9,7 @@ input {
 	border: 1px solid var(--secondary-color);
 
 	width: 100%;
+	box-sizing: border-box;
 }
 
 input:focus,
