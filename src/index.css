@@ -17,6 +17,7 @@
 	--secondary-color: gray;
 	--background-color: black;
 	--background-alt-color: DarkSlateGrey;
+	--border-color: lightgrey;
 	--accent-color: blue;
 	--text-color: white;
 	--success-color: green;
@@ -44,18 +45,19 @@ h1 {
 
 @media (prefers-color-scheme: light) {
 	:root {
-		color: #213547;
-		background-color: #ffffff;
-
 		--primary-color: black;
 		--on-primary-color: white;
 		--secondary-color: gray;
 		--background-color: white;
-		--background-alt-color: lightgray;
+		--background-alt-color: rgb(247, 247, 247);
+		--border-color: lightgrey;
 		--accent-color: blue;
 		--text-color: black;
 		--success-color: green;
 		--error-color: red;
+
+		color: #213547;
+		background-color: var(--background-alt-color);
 	}
 	a:hover {
 		color: #747bff;

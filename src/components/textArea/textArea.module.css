@@ -6,7 +6,7 @@ textarea {
 	font-weight: 500;
 	font-family: inherit;
 
-	border: 1px solid var(--secondary-color);
+	border: 1px solid var(--border-color);
 
 	width: 100%;
 	box-sizing: border-box;

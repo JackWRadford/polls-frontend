@@ -19,8 +19,8 @@ button:focus-visible {
 }
 
 .secondary {
-	border: 1px var(--primary-color) solid;
+	border: 1px solid var(--border-color);
 
 	color: var(--text-color);
-	background-color: var(--background-color);
+	background-color: var(--background-alt-color);
 }
