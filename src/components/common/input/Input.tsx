@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import styles from "./input.module.css";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	placeholder: string;
 }
 
