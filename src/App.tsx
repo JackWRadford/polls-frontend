@@ -2,12 +2,16 @@ import "./App.css";
 import Button from "./components/button/Button";
 import Card from "./components/card/Card";
 import Input from "./components/input/Input";
+import ProgressBar from "./components/progressBar/ProgressBar";
 import RadioSelect from "./components/radioSelect/RadioSelect";
 import TextArea from "./components/textArea/TextArea";
 
 function App() {
 	return (
 		<Card>
+			<ProgressBar value={1} />
+			<ProgressBar value={60} />
+			<ProgressBar value={99} />
 			<RadioSelect
 				options={[
 					{

@@ -1,0 +1,18 @@
+.backgroundBar {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+
+	border: 1px solid var(--border-color);
+	border-radius: 1rem;
+
+	background-color: var(--background-alt-color);
+}
+
+.foregroundBar {
+	height: 0.8rem;
+	background-color: var(--primary-color);
+
+	border-radius: 1rem;
+}
