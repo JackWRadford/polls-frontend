@@ -1,10 +1,10 @@
 import "./App.css";
-import Button from "./components/button/Button";
-import Card from "./components/card/Card";
-import Input from "./components/input/Input";
-import ProgressBar from "./components/progressBar/ProgressBar";
-import RadioSelect from "./components/radioSelect/RadioSelect";
-import TextArea from "./components/textArea/TextArea";
+import Button from "./components/common/button/Button";
+import Card from "./components/common/card/Card";
+import Input from "./components/common/input/Input";
+import ProgressBar from "./components/common/progressBar/ProgressBar";
+import RadioSelect from "./components/common/radioSelect/RadioSelect";
+import TextArea from "./components/common/textArea/TextArea";
 
 function App() {
 	return (
