@@ -1,0 +1,26 @@
+.radioLabel {
+	cursor: pointer;
+
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 1rem;
+}
+
+.radioLabel input {
+	appearance: none;
+
+	width: 1rem;
+	height: 1rem;
+	border-radius: 6px;
+	border: 1px solid var(--border-color);
+
+	margin: 0rem;
+	margin-top: 0.085rem;
+	margin-right: 0.6rem;
+
+	transition: 0.15s background-color linear;
+}
+
+.radioLabel input:checked {
+	background-color: var(--primary-color);
+}

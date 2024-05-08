@@ -2,11 +2,25 @@ import "./App.css";
 import Button from "./components/button/Button";
 import Card from "./components/card/Card";
 import Input from "./components/input/Input";
+import RadioSelect from "./components/radioSelect/RadioSelect";
 import TextArea from "./components/textArea/TextArea";
 
 function App() {
 	return (
 		<Card>
+			<RadioSelect
+				options={[
+					{
+						value: "0",
+						label: "React",
+					},
+					{ value: "1", label: "Vue" },
+					{ value: "2", label: "Angular" },
+				]}
+				onSelect={function (value: string): void {
+					throw new Error("Function not implemented.");
+				}}
+			/>
 			<Button
 				label={"Hold to Create"}
 				onClick={function (): void {
