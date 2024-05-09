@@ -10,6 +10,22 @@ const CreatePoll = () => {
 
 	const handleCreatePoll = () => {};
 
+	const handleOptionChange = (value: string, index: number) => {
+		// Update the relevant option.
+		setOptions((prev) => {
+			const updatedOptions = [...prev];
+			updatedOptions[index] = value;
+			return updatedOptions;
+		});
+	};
+
+	const handleAddOption = () => {
+		setOptions((prev) => {
+			const updatedOptions = [...prev, ""];
+			return updatedOptions;
+		});
+	};
+
 	return (
 		<Card className={styles.container}>
 			<form>
@@ -19,11 +35,24 @@ const CreatePoll = () => {
 						<Input
 							key={index}
 							value={option}
+							onChange={(value: string) =>
+								handleOptionChange(value, index)
+							}
 							placeholder={`Option ${index + 1}`}
 						/>
 					))}
 				</ul>
-				<Button label={"Create Poll"} onClick={handleCreatePoll} />
+				<Button
+					label="Add Option"
+					onClick={handleAddOption}
+					level="secondary"
+					type="button"
+				/>
+				<Button
+					label={"Create Poll"}
+					onClick={handleCreatePoll}
+					type="submit"
+				/>
 			</form>
 		</Card>
 	);

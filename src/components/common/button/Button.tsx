@@ -1,21 +1,28 @@
 import clsx from "clsx";
 import styles from "./button.module.css";
+import { ButtonHTMLAttributes } from "react";
 
-interface ButtonProps {
-	label: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
-	type?: "primary" | "secondary";
+	label?: string;
+	level?: "primary" | "secondary";
 }
 
-const Button = ({ label, onClick, type = "primary" }: ButtonProps) => {
-	const secondaryClass = type == "secondary" ? styles.secondary : null;
+const Button = ({
+	onClick,
+	label,
+	level = "primary",
+	...rest
+}: ButtonProps) => {
+	const secondaryClass = level == "secondary" ? styles.secondary : null;
 
 	return (
 		<button
 			className={clsx(styles.button, secondaryClass)}
 			onClick={onClick}
+			{...rest}
 		>
-			{label}
+			{label && label}
 		</button>
 	);
 };
