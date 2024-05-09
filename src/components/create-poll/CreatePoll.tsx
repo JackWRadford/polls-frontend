@@ -3,7 +3,7 @@ import Button from "../common/button/Button";
 import Card from "../common/card/Card";
 import TextArea from "../common/textArea/TextArea";
 import styles from "./createPoll.module.css";
-import Input from "../common/input/Input";
+import OptionInput from "./option-input/OptionInput";
 
 const CreatePoll = () => {
 	const [options, setOptions] = useState<string[]>(["", ""]);
@@ -26,6 +26,14 @@ const CreatePoll = () => {
 		});
 	};
 
+	const handleDeleteOption = (index: number) => {
+		setOptions((prev) => {
+			const updatedOptions = [...prev];
+			updatedOptions.splice(index, 1);
+			return updatedOptions;
+		});
+	};
+
 	return (
 		<Card className={styles.container}>
 			<form>
@@ -33,12 +41,13 @@ const CreatePoll = () => {
 				<div className={styles.optionsContainer}>
 					<ul>
 						{options.map((option, index) => (
-							<Input
+							<OptionInput
 								key={index}
 								value={option}
 								onChange={(value: string) =>
 									handleOptionChange(value, index)
 								}
+								onDelete={() => handleDeleteOption(index)}
 								placeholder={`Option ${index + 1}`}
 							/>
 						))}
