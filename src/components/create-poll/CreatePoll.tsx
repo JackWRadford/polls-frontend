@@ -6,6 +6,7 @@ import styles from "./createPoll.module.css";
 import OptionInput from "./option-input/OptionInput";
 
 const CreatePoll = () => {
+	const [prompt, setPrompt] = useState<string>("");
 	const [options, setOptions] = useState<string[]>(["", ""]);
 
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -39,7 +40,11 @@ const CreatePoll = () => {
 	return (
 		<Card className={styles.container}>
 			<form onSubmit={handleSubmit}>
-				<TextArea placeholder={"Poll Prompt"} />
+				<TextArea
+					placeholder={"Poll Prompt"}
+					value={prompt}
+					onChange={(event) => setPrompt(event.target.value)}
+				/>
 				<div className={styles.optionsContainer}>
 					<ul>
 						{options.map((option, index) => (
