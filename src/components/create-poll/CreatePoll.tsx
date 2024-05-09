@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Button from "../common/button/Button";
 import Card from "../common/card/Card";
 import TextArea from "../common/textArea/TextArea";
@@ -8,7 +8,9 @@ import OptionInput from "./option-input/OptionInput";
 const CreatePoll = () => {
 	const [options, setOptions] = useState<string[]>(["", ""]);
 
-	const handleCreatePoll = () => {};
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+	};
 
 	const handleOptionChange = (value: string, index: number) => {
 		// Update the relevant option.
@@ -36,7 +38,7 @@ const CreatePoll = () => {
 
 	return (
 		<Card className={styles.container}>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<TextArea placeholder={"Poll Prompt"} />
 				<div className={styles.optionsContainer}>
 					<ul>
@@ -62,7 +64,7 @@ const CreatePoll = () => {
 				</div>
 				<Button
 					label={"Create Poll"}
-					onClick={handleCreatePoll}
+					onClick={() => {}}
 					type="submit"
 				/>
 			</form>

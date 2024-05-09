@@ -1,6 +1,7 @@
 import Button from "../../common/button/Button";
 import Input, { InputProps } from "../../common/input/Input";
 import styles from "./optionInput.module.css";
+import { HiXMark } from "react-icons/hi2";
 
 interface OptionInput extends InputProps {
 	onDelete: () => void;
@@ -9,13 +10,10 @@ interface OptionInput extends InputProps {
 const OptionInput = ({ onDelete, ...rest }: OptionInput) => {
 	return (
 		<div className={styles.container}>
-			<Input {...rest} />
-			<Button
-				type="button"
-				label="Delete"
-				onClick={onDelete}
-				level="secondary"
-			/>
+			<Input {...rest} type="text" />
+			<Button type="button" onClick={onDelete} level="secondary">
+				<HiXMark />
+			</Button>
 		</div>
 	);
 };

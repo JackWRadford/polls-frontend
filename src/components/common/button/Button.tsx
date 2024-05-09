@@ -1,12 +1,13 @@
 import clsx from "clsx";
 import styles from "./button.module.css";
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
 	label?: string;
 	level?: "primary" | "secondary";
 	fitContent?: boolean;
+	children?: ReactNode;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
 	label,
 	level = "primary",
 	fitContent = false,
+	children,
 	...rest
 }: ButtonProps) => {
 	const secondaryClass = level == "secondary" ? styles.secondary : null;
@@ -26,7 +28,8 @@ const Button = ({
 			onClick={onClick}
 			{...rest}
 		>
-			{label && label}
+			{label}
+			{children}
 		</button>
 	);
 };
