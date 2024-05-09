@@ -15,7 +15,8 @@
 	--secondary-color: gray;
 	--background-color: rgb(21, 21, 21);
 	--background-alt-color: rgb(0, 0, 0);
-	--border-color: rgb(59, 59, 59);
+	--foreground-color: rgb(44, 44, 44);
+	--border-color: rgb(68, 68, 68);
 	--accent-color: blue;
 	--text-color: white;
 	--success-color: green;
@@ -52,6 +53,7 @@ h1 {
 		--secondary-color: gray;
 		--background-color: white;
 		--background-alt-color: rgb(247, 247, 247);
+		--foreground-color: white;
 		--border-color: lightgrey;
 		--accent-color: blue;
 		--text-color: black;

@@ -26,5 +26,5 @@ button:focus-visible {
 	border: 1px solid var(--border-color);
 
 	color: var(--text-color);
-	background-color: var(--background-alt-color);
+	background-color: var(--foreground-color);
 }

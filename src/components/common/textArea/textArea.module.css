@@ -11,6 +11,8 @@ textarea {
 	width: 100%;
 	box-sizing: border-box;
 	resize: vertical;
+
+	background-color: var(--foreground-color);
 }
 
 textarea:focus,
