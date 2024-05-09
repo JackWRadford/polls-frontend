@@ -6,18 +6,22 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
 	label?: string;
 	level?: "primary" | "secondary";
+	fitContent?: boolean;
 }
 
 const Button = ({
 	onClick,
 	label,
 	level = "primary",
+	fitContent = false,
 	...rest
 }: ButtonProps) => {
 	const secondaryClass = level == "secondary" ? styles.secondary : null;
+	const buttonStyle = fitContent ? { width: "fit-content" } : {};
 
 	return (
 		<button
+			style={{ ...buttonStyle }}
 			className={clsx(styles.button, secondaryClass)}
 			onClick={onClick}
 			{...rest}

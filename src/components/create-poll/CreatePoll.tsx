@@ -30,24 +30,27 @@ const CreatePoll = () => {
 		<Card className={styles.container}>
 			<form>
 				<TextArea placeholder={"Poll Prompt"} />
-				<ul className={styles.optionsContainer}>
-					{options.map((option, index) => (
-						<Input
-							key={index}
-							value={option}
-							onChange={(value: string) =>
-								handleOptionChange(value, index)
-							}
-							placeholder={`Option ${index + 1}`}
-						/>
-					))}
-				</ul>
-				<Button
-					label="Add Option"
-					onClick={handleAddOption}
-					level="secondary"
-					type="button"
-				/>
+				<div className={styles.optionsContainer}>
+					<ul>
+						{options.map((option, index) => (
+							<Input
+								key={index}
+								value={option}
+								onChange={(value: string) =>
+									handleOptionChange(value, index)
+								}
+								placeholder={`Option ${index + 1}`}
+							/>
+						))}
+					</ul>
+					<Button
+						label="Add Option"
+						onClick={handleAddOption}
+						level="secondary"
+						type="button"
+						fitContent
+					/>
+				</div>
 				<Button
 					label={"Create Poll"}
 					onClick={handleCreatePoll}

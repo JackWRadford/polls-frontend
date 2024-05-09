@@ -9,6 +9,12 @@
 	gap: 1rem;
 }
 
+.optionsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
 .container ul {
 	display: flex;
 	flex-direction: column;
