@@ -12,7 +12,7 @@ const OptionInput = ({ onDelete, ...rest }: OptionInput) => {
 		<div className={styles.container}>
 			<Input {...rest} type="text" />
 			<Button type="button" onClick={onDelete} level="secondary">
-				<HiXMark />
+				<HiXMark size={20} />
 			</Button>
 		</div>
 	);
