@@ -11,15 +11,48 @@ const CreatePoll = () => {
 	const [options, setOptions] = useState<string[]>(["", ""]);
 	const [validationError, setValidationError] = useState<string>("");
 
-	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setValidationError("");
 
 		// Validation
 		if (!prompt) {
 			setValidationError("Please enter a prompt");
+			return;
 		} else if (!validateOptions()) {
 			setValidationError("Please include at least two options");
+			return;
+		}
+
+		// Construct JSON body
+		const body = JSON.stringify({
+			title: prompt,
+			options: options,
+		});
+
+		try {
+			// POST request
+			const response = await fetch(`http://localhost:3000/polls/create`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body,
+			});
+
+			// Check response
+			if (!response.ok) {
+				throw new Error("Failed to create api");
+			}
+
+			// Reset form
+			setPrompt("");
+			setOptions(["", ""]);
+		} catch (error) {
+			console.error("Error creating poll:", error);
+			setValidationError(
+				"Failed to create the poll. Please try again later."
+			);
 		}
 	};
 
