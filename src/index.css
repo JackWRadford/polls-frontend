@@ -10,6 +10,8 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+	--max-content-width: 1280px;
+
 	--primary-color: white;
 	--on-primary-color: black;
 	--secondary-color: gray;

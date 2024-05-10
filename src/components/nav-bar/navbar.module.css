@@ -1,16 +1,17 @@
+.navWrapper {
+	background-color: var(--background-color);
+	border-bottom: 1px solid var(--border-color);
+	margin-bottom: 2rem;
+}
+
 .nav {
 	display: flex;
 	gap: 1.4rem;
 	align-items: flex-end;
-
-	background-color: var(--background-color);
-
-	border: 1px solid var(--border-color);
-	border-top: none;
-	border-radius: 0 0 8px 8px;
+	max-width: var(--max-content-width);
 
 	padding: 1rem 2rem;
-	margin-bottom: 2rem;
+	margin: 0 auto;
 }
 
 .nav a {
