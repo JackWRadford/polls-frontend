@@ -1,0 +1,25 @@
+.nav {
+	display: flex;
+	gap: 1.4rem;
+	align-items: flex-end;
+
+	background-color: var(--background-color);
+
+	border: 1px solid var(--border-color);
+	border-top: none;
+	border-radius: 0 0 8px 8px;
+
+	padding: 1rem 2rem;
+	margin-bottom: 2rem;
+}
+
+.nav a {
+	color: var(--secondary-color);
+	font-size: smaller;
+}
+
+.homeLink {
+	font: bold;
+	font-size: medium !important;
+	color: var(--primary-color) !important;
+}

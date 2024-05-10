@@ -1,10 +1,10 @@
 import { FormEvent, useState } from "react";
-import Button from "../common/button/Button";
-import Card from "../common/card/Card";
-import TextArea from "../common/textArea/TextArea";
+import Button from "../../components/common/button/Button";
+import Card from "../../components/common/card/Card";
+import TextArea from "../../components/common/textArea/TextArea";
 import styles from "./createPoll.module.css";
 import OptionInput from "./option-input/OptionInput";
-import ErrorMessage from "../common/error-message/ErrorMessage";
+import ErrorMessage from "../../components/common/error-message/ErrorMessage";
 
 const CreatePoll = () => {
 	const [prompt, setPrompt] = useState<string>("");

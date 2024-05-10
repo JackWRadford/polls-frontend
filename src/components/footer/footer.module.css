@@ -1,0 +1,18 @@
+.footer {
+	display: flex;
+	align-items: center;
+
+	background-color: var(--background-color);
+
+	border: 1px solid var(--border-color);
+	border-bottom: none;
+	border-radius: 8px 8px 0 0;
+
+	padding: 0.4rem 2rem;
+	margin-top: 2rem;
+}
+
+.footer p {
+	font-size: smaller;
+	color: var(--secondary-color);
+}

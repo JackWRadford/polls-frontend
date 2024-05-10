@@ -1,9 +1,18 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-
-import CreatePoll from "./components/create-poll/CreatePoll";
+import NavBar from "./components/nav-bar/NavBar";
+import Footer from "./components/footer/Footer";
 
 function App() {
-	return <CreatePoll />;
+	return (
+		<>
+			<div>
+				<NavBar />
+				<Outlet />
+			</div>
+			<Footer />
+		</>
+	);
 }
 
 export default App;
