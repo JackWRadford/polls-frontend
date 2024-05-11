@@ -2,8 +2,8 @@ import { useState } from "react";
 import styles from "./radioSelect.module.css";
 
 interface Option {
-	value: string;
-	label: string;
+	id: string;
+	title: string;
 }
 
 interface RadioSelectProps {
@@ -22,14 +22,14 @@ const RadioSelect = ({ options, onSelect }: RadioSelectProps) => {
 	return (
 		<div>
 			{options.map((option) => (
-				<label key={option.value} className={styles.radioLabel}>
+				<label key={option.id} className={styles.radioLabel}>
 					<input
 						type="radio"
-						value={option.value}
-						checked={selectedValue === option.value}
-						onChange={() => handleSelect(option.value)}
+						value={option.id}
+						checked={selectedValue === option.id}
+						onChange={() => handleSelect(option.id)}
 					/>
-					{option.label}
+					{option.title}
 				</label>
 			))}
 		</div>

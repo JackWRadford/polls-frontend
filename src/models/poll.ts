@@ -4,7 +4,7 @@ export interface Option {
 }
 
 export interface Poll {
-	id: string;
+	_id: string;
 	title: string;
 	options: Option[];
 	createdAt: Date;

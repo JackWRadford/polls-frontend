@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import CreatePoll from "./routes/create-poll/CreatePoll.tsx";
+import PollPage from "./routes/poll-page/PollPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
 			{
 				path: "/create-poll",
 				element: <CreatePoll />,
+			},
+			{
+				path: "/:id",
+				element: <PollPage />,
 			},
 		],
 	},
