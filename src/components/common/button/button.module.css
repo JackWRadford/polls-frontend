@@ -15,11 +15,17 @@ button {
 	background-color: var(--primary-color);
 
 	cursor: pointer;
+
+	transition: opacity 0.2s;
 }
 
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
+}
+
+button:disabled {
+	opacity: 0.2;
 }
 
 .secondary {
