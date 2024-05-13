@@ -1,13 +1,13 @@
-import Button from "../../../components/common/button/Button";
-import Input, { InputProps } from "../../../components/common/input/Input";
-import styles from "./optionInput.module.css";
+import Button from "../common/button/Button";
+import Input, { InputProps } from "../common/input/Input";
+import styles from "./pollOptionInput.module.css";
 import { HiXMark } from "react-icons/hi2";
 
 interface OptionInput extends InputProps {
 	onDelete: () => void;
 }
 
-const OptionInput = ({ onDelete, ...rest }: OptionInput) => {
+const PollOptionInput = ({ onDelete, ...rest }: OptionInput) => {
 	return (
 		<div className={styles.container}>
 			<Input {...rest} type="text" />
@@ -18,4 +18,4 @@ const OptionInput = ({ onDelete, ...rest }: OptionInput) => {
 	);
 };
 
-export default OptionInput;
+export default PollOptionInput;

@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react";
 import Button from "../../components/common/button/Button";
 import Card from "../../components/common/card/Card";
-import TextArea from "../../components/common/textArea/TextArea";
-import styles from "./createPoll.module.css";
-import OptionInput from "./option-input/OptionInput";
+import TextArea from "../../components/common/text-area/TextArea";
+import styles from "./createPollPage.module.css";
+import PollOptionInput from "../../components/poll-option-input/PollOptionInput";
 import ErrorMessage from "../../components/common/error-message/ErrorMessage";
 
-const CreatePoll = () => {
+const CreatePollPage = () => {
 	const [prompt, setPrompt] = useState<string>("");
 	const [options, setOptions] = useState<string[]>(["", ""]);
 	const [validationError, setValidationError] = useState<string>("");
@@ -97,7 +97,7 @@ const CreatePoll = () => {
 				<div className={styles.optionsContainer}>
 					<ul>
 						{options.map((option, index) => (
-							<OptionInput
+							<PollOptionInput
 								key={index}
 								value={option}
 								onChange={(value: string) =>
@@ -127,4 +127,4 @@ const CreatePoll = () => {
 	);
 };
 
-export default CreatePoll;
+export default CreatePollPage;

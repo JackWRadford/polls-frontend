@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-import CreatePoll from "./routes/create-poll/CreatePoll.tsx";
-import PollPage from "./routes/poll-page/PollPage.tsx";
+import CreatePollPage from "./pages/create-poll-page/CreatePollPage.tsx";
+import PollPage from "./pages/poll-page/PollPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/create-poll",
-				element: <CreatePoll />,
+				element: <CreatePollPage />,
 			},
 			{
 				path: "/:id",

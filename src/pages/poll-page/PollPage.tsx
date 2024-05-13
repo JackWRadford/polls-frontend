@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Card from "../../components/common/card/Card";
 import { useEffect, useState } from "react";
 import styles from "./pollPage.module.css";
-import RadioSelect from "../../components/common/radioSelect/RadioSelect";
+import RadioSelect from "../../components/common/radio-select/RadioSelect";
 import Button from "../../components/common/button/Button";
 import { Poll } from "../../models/poll";
 
