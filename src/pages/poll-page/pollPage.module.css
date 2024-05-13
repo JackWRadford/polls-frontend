@@ -7,16 +7,8 @@
 	max-width: 30rem;
 }
 
-.container h1 {
-	font-size: x-large;
-	margin: 0rem;
-	margin-bottom: 0.6rem;
-}
-
 .container p {
-	margin: 0rem;
-	color: var(--secondary-color);
-	font-size: medium;
+	margin-bottom: 0rem;
 }
 
 .action {

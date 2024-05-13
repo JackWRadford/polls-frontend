@@ -43,9 +43,38 @@ body {
 	min-height: 100vh;
 }
 
+/* Used to block scrolling when the dialog is open in Dialog.tsx */
+body.model-open {
+	overflow: hidden;
+}
+
+/* Header Styles */
+
 h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
+	font-size: x-large;
+	margin: 0rem;
+	margin-bottom: 1rem;
+}
+
+h2 {
+	font-size: large;
+	margin: 0rem;
+	margin-bottom: 1rem;
+}
+
+h3 {
+	font-size: large;
+	margin: 0rem;
+	margin-bottom: 0.35rem;
+}
+
+/* Paragraph Styles */
+
+p {
+	font-size: medium;
+	margin: 0rem;
+	margin-bottom: 1rem;
+	color: var(--secondary-color);
 }
 
 @media (prefers-color-scheme: light) {

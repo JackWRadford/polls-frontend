@@ -1,0 +1,24 @@
+.dialog {
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+
+	padding: 1.4rem 2rem 1rem 2rem;
+}
+
+.dialogContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.dialog::backdrop {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.buttonsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+	margin-top: 1rem;
+}

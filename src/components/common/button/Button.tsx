@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./button.module.css";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
 	label?: string;
 	level?: "primary" | "secondary";
