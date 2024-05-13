@@ -9,7 +9,7 @@ import { Poll } from "../../models/poll";
 const PollPage = () => {
 	const { id } = useParams();
 	const [poll, setPoll] = useState<Poll>();
-	const [selectedOption, setSelectedOption] = useState<string>();
+	const [selectedOptionId, setSelectedOptionId] = useState<string>();
 
 	useEffect(() => {
 		const fetchPoll = async () => {
@@ -35,8 +35,37 @@ const PollPage = () => {
 	}, [id]);
 
 	const submitIsDisabled = useMemo((): boolean => {
-		return selectedOption === undefined;
-	}, [selectedOption]);
+		return selectedOptionId === undefined;
+	}, [selectedOptionId]);
+
+	const castVote = async () => {
+		const id = poll?._id;
+		if (!id) {
+			return;
+		}
+		const body = JSON.stringify({
+			pollId: id,
+			optionId: selectedOptionId,
+		});
+
+		try {
+			const result = await fetch(
+				`http://localhost:3000/polls/${id}/vote`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body,
+				}
+			);
+			if (!result.ok) {
+				throw new Error("Failed to vote in poll");
+			}
+		} catch (error) {
+			console.error("Error while submitting vote", error);
+		}
+	};
 
 	return (
 		<Card className={styles.container}>
@@ -45,12 +74,12 @@ const PollPage = () => {
 			{poll && (
 				<RadioSelect
 					options={poll.options}
-					onSelect={(value) => setSelectedOption(value)}
+					onSelect={(value) => setSelectedOptionId(value)}
 				/>
 			)}
 			<Button
 				label="Submit Vote"
-				onClick={() => {}}
+				onClick={castVote}
 				fitContent
 				className={styles.action}
 				disabled={submitIsDisabled}
