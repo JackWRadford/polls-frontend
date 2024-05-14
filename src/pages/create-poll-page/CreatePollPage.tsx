@@ -5,13 +5,13 @@ import TextArea from "../../components/common/text-area/TextArea";
 import styles from "./createPollPage.module.css";
 import PollOptionInput from "../../components/poll-option-input/PollOptionInput";
 import ErrorMessage from "../../components/common/error-message/ErrorMessage";
-import Dialog from "../../components/dialog/Dialog";
+import { useNavigate } from "react-router-dom";
 
 const CreatePollPage = () => {
 	const [prompt, setPrompt] = useState<string>("");
 	const [options, setOptions] = useState<string[]>(["", ""]);
 	const [validationError, setValidationError] = useState<string>("");
-	const [dialogIsOpen, setDialogIsOpen] = useState<boolean>(false);
+	const navigate = useNavigate();
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -45,14 +45,11 @@ const CreatePollPage = () => {
 			// Check response
 			if (!response.ok) {
 				throw new Error("Failed to create api");
+			} else {
+				// Navigate to the poll page
+				const insertedId: string = (await response.json()).insertedId;
+				navigate(`/${insertedId}`);
 			}
-
-			// Reset form
-			setPrompt("");
-			setOptions(["", ""]);
-
-			// Show the dialog
-			setDialogIsOpen(true);
 		} catch (error) {
 			console.error("Error creating poll:", error);
 			setValidationError(
@@ -93,14 +90,6 @@ const CreatePollPage = () => {
 
 	return (
 		<Card className={styles.container}>
-			<Dialog
-				title={"Poll Successfully Created"}
-				message={"Your poll has been created."}
-				isOpen={dialogIsOpen}
-				children={undefined}
-				buttons={[]}
-				onClose={() => setDialogIsOpen(false)}
-			/>
 			<form onSubmit={handleSubmit}>
 				<TextArea
 					placeholder={"Poll Prompt"}
