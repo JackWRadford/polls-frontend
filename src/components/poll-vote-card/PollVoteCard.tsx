@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import Card from "../../components/common/card/Card";
+import Card from "../common/card/Card";
 import { useEffect, useMemo, useState } from "react";
-import styles from "./pollPage.module.css";
-import RadioSelect from "../../components/common/radio-select/RadioSelect";
-import Button from "../../components/common/button/Button";
+import styles from "./pollVoteCard.module.css";
+import RadioSelect from "../common/radio-select/RadioSelect";
+import Button from "../common/button/Button";
 import { Poll } from "../../models/poll";
 
-const PollPage = () => {
+const PollVoteCard = () => {
 	const { id } = useParams();
 	const [poll, setPoll] = useState<Poll>();
 	const [selectedOptionId, setSelectedOptionId] = useState<string>();
@@ -88,4 +88,4 @@ const PollPage = () => {
 	);
 };
 
-export default PollPage;
+export default PollVoteCard;

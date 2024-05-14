@@ -6,10 +6,10 @@ import Footer from "./components/footer/Footer";
 function App() {
 	return (
 		<div className={styles.app}>
-			<div>
-				<NavBar />
+			<NavBar />
+			<main>
 				<Outlet />
-			</div>
+			</main>
 			<Footer />
 		</div>
 	);
