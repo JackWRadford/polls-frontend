@@ -48,33 +48,20 @@ body.model-open {
 	overflow: hidden;
 }
 
-/* Header Styles */
-
-h1 {
-	font-size: x-large;
-	margin: 0rem;
-	margin-bottom: 1rem;
-}
-
-h2 {
-	font-size: large;
-	margin: 0rem;
-	margin-bottom: 1rem;
-}
-
-h3 {
-	font-size: large;
-	margin: 0rem;
-	margin-bottom: 0.35rem;
-}
-
-/* Paragraph Styles */
-
-p {
-	font-size: medium;
-	margin: 0rem;
-	margin-bottom: 1rem;
-	color: var(--secondary-color);
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+	margin: 0;
 }
 
 @media (prefers-color-scheme: light) {
