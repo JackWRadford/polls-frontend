@@ -16,3 +16,9 @@
 	font-size: smaller;
 	color: var(--secondary-color);
 }
+
+@media screen and (max-width: 600px) {
+	.footer {
+		padding: 1rem;
+	}
+}

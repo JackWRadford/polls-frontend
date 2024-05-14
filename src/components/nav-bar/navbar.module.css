@@ -23,3 +23,9 @@
 	font-size: medium !important;
 	color: var(--primary-color) !important;
 }
+
+@media screen and (max-width: 600px) {
+	.nav {
+		padding: 1rem;
+	}
+}
