@@ -6,3 +6,19 @@
 .container h1 {
 	font-size: x-large;
 }
+
+.container ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.container li {
+	margin: 0.7rem 0;
+}
+
+.itemLabels {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 0.2rem;
+	margin-bottom: 0.2rem;
+}
