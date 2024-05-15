@@ -60,19 +60,21 @@ const PollResultsCard = ({ pollId }: PollResultsCardProps) => {
 		<Card className={styles.container}>
 			<h1>{pollResults?.poll.title}</h1>
 			<ul>
-				{pollResults?.pollResultsData.map((optionResultData, index) => (
-					<li key={index}>
-						<div className={styles.itemLabels}>
-							<p>{optionResultData.optionTitle}</p>
-							<p>{`${optionResultData.percentage}% (${
-								optionResultData.count
-							} ${getVoteCountLabel(
-								optionResultData.count
-							)})`}</p>
-						</div>
-						<ProgressBar value={optionResultData.percentage} />
-					</li>
-				))}
+				{pollResults?.pollResultsData
+					.sort((a, b) => b.count - a.count)
+					.map((optionResultData, index) => (
+						<li key={index}>
+							<div className={styles.itemLabels}>
+								<p>{optionResultData.optionTitle}</p>
+								<p>{`${optionResultData.percentage}% (${
+									optionResultData.count
+								} ${getVoteCountLabel(
+									optionResultData.count
+								)})`}</p>
+							</div>
+							<ProgressBar value={optionResultData.percentage} />
+						</li>
+					))}
 			</ul>
 			<p>{`${pollResults?.totalVoteCount} ${voteCountLabel}`}</p>
 		</Card>
