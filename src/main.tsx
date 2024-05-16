@@ -6,12 +6,14 @@ import App from "./App.tsx";
 import PollVotePage from "./pages/poll-vote-page/PollVotePage.tsx";
 import CreatePollPage from "./pages/create-poll-page/CreatePollPage.tsx";
 import PollResultsPage from "./pages/poll-results-page/PollResultsPage.tsx";
+import HomePage from "./pages/home-page/HomePage.tsx";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
 		children: [
+			{ path: "/", element: <HomePage /> },
 			{
 				path: "/create-poll",
 				element: <CreatePollPage />,

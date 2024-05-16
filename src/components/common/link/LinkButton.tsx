@@ -3,7 +3,7 @@ import styles from "./linkButton.module.css";
 import { ReactNode } from "react";
 import clsx from "clsx";
 
-interface LinkButtonProps extends LinkProps {
+export interface LinkButtonProps extends LinkProps {
 	label?: string;
 	level?: "primary" | "secondary";
 	fitContent?: boolean;

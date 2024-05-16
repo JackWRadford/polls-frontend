@@ -19,10 +19,6 @@
 	transition: opacity 0.2s;
 }
 
-.link:hover {
-	color: inherit;
-}
-
 .link:focus,
 .link:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
