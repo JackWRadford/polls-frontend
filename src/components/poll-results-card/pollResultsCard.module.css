@@ -22,3 +22,10 @@
 	margin: 0 0.2rem;
 	margin-bottom: 0.2rem;
 }
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}

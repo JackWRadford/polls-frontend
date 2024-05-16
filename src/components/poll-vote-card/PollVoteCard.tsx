@@ -5,6 +5,7 @@ import styles from "./pollVoteCard.module.css";
 import RadioSelect from "../common/radio-select/RadioSelect";
 import Button from "../common/button/Button";
 import { Poll } from "../../models/poll";
+import LinkButton from "../common/link/LinkButton";
 
 const PollVoteCard = () => {
 	const { id } = useParams();
@@ -69,21 +70,32 @@ const PollVoteCard = () => {
 
 	return (
 		<Card className={styles.container}>
-			<h1>{poll?.title}</h1>
-			<p>Choose one:</p>
 			{poll && (
-				<RadioSelect
-					options={poll.options}
-					onSelect={(value) => setSelectedOptionId(value)}
-				/>
+				<>
+					<h1>{poll.title}</h1>
+					<p>Choose one:</p>
+					{poll && (
+						<RadioSelect
+							options={poll.options}
+							onSelect={(value) => setSelectedOptionId(value)}
+						/>
+					)}
+					<div className={styles.footer}>
+						<LinkButton
+							to={`/${poll._id}/result`}
+							label="Results"
+							level="secondary"
+						/>
+						<Button
+							label="Submit Vote"
+							onClick={castVote}
+							fitContent
+							className={styles.action}
+							disabled={submitIsDisabled}
+						/>
+					</div>
+				</>
 			)}
-			<Button
-				label="Submit Vote"
-				onClick={castVote}
-				fitContent
-				className={styles.action}
-				disabled={submitIsDisabled}
-			/>
 		</Card>
 	);
 };

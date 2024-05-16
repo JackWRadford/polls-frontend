@@ -1,0 +1,40 @@
+.link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6rem 1rem;
+
+	font-size: 0.9rem;
+	font-weight: 500;
+	font-family: inherit;
+
+	color: var(--on-primary-color);
+	background-color: var(--primary-color);
+
+	cursor: pointer;
+
+	transition: opacity 0.2s;
+}
+
+.link:hover {
+	color: inherit;
+}
+
+.link:focus,
+.link:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
+}
+
+.link:disabled {
+	opacity: 0.2;
+}
+
+.secondary {
+	border: 1px solid var(--border-color);
+
+	color: var(--text-color);
+	background-color: var(--foreground-color);
+}

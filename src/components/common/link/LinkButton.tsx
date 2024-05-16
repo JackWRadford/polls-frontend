@@ -1,37 +1,35 @@
+import { Link, LinkProps } from "react-router-dom";
+import styles from "./linkButton.module.css";
+import { ReactNode } from "react";
 import clsx from "clsx";
-import styles from "./button.module.css";
-import { ButtonHTMLAttributes, ReactNode } from "react";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	onClick: () => void;
+interface LinkButtonProps extends LinkProps {
 	label?: string;
 	level?: "primary" | "secondary";
 	fitContent?: boolean;
 	children?: ReactNode;
 }
 
-const Button = ({
-	onClick,
+const LinkButton = ({
 	label,
 	level = "primary",
 	fitContent = false,
 	children,
 	...rest
-}: ButtonProps) => {
+}: LinkButtonProps) => {
 	const secondaryClass = level == "secondary" ? styles.secondary : null;
 	const buttonStyle = fitContent ? { width: "fit-content" } : {};
 
 	return (
-		<button
+		<Link
+			className={clsx(styles.link, secondaryClass)}
 			style={buttonStyle}
-			className={clsx(styles.button, secondaryClass)}
-			onClick={onClick}
 			{...rest}
 		>
 			{label}
 			{children}
-		</button>
+		</Link>
 	);
 };
 
-export default Button;
+export default LinkButton;

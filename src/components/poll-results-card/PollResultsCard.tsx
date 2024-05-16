@@ -3,6 +3,7 @@ import Card from "../common/card/Card";
 import { Poll } from "../../models/poll";
 import styles from "./pollResultsCard.module.css";
 import ProgressBar from "../common/progress-bar/ProgressBar";
+import LinkButton from "../common/link/LinkButton";
 
 interface PollResultsCardProps {
 	pollId: string;
@@ -76,7 +77,14 @@ const PollResultsCard = ({ pollId }: PollResultsCardProps) => {
 						</li>
 					))}
 			</ul>
-			<p>{`${pollResults?.totalVoteCount} ${voteCountLabel}`}</p>
+			<div className={styles.footer}>
+				<p>{`${pollResults?.totalVoteCount} ${voteCountLabel}`}</p>
+				<LinkButton
+					to={`/${pollId}`}
+					label="View Poll"
+					level="secondary"
+				/>
+			</div>
 		</Card>
 	);
 };

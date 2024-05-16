@@ -70,6 +70,10 @@ pre {
 	margin: 0;
 }
 
+a {
+	line-height: normal;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--primary-color: black;

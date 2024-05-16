@@ -20,6 +20,14 @@
 	align-self: flex-end;
 }
 
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: flex-end;
+	gap: 0.4rem;
+}
+
 @media screen and (max-width: 600px) {
 	.container {
 		margin-top: 1rem;
