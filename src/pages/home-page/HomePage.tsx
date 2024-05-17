@@ -1,4 +1,5 @@
 import Hero from "../../components/home/hero/Hero";
+import RecentPolls from "../../components/home/recent-polls/RecentPolls";
 import styles from "./homePage.module.css";
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
 					label: "Create Poll",
 				}}
 			/>
+			<RecentPolls />
 		</div>
 	);
 };
