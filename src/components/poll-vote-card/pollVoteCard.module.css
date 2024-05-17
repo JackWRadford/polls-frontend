@@ -4,8 +4,6 @@
 	gap: 1rem;
 	width: calc(100% - 2rem);
 	max-width: 30rem;
-
-	margin-top: 3rem;
 }
 
 .container h1 {
@@ -26,10 +24,4 @@
 	justify-content: flex-end;
 	align-items: flex-end;
 	gap: 0.4rem;
-}
-
-@media screen and (max-width: 600px) {
-	.container {
-		margin-top: 1rem;
-	}
 }
