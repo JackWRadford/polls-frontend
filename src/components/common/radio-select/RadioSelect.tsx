@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./radioSelect.module.css";
 
 interface Option {
@@ -8,14 +7,16 @@ interface Option {
 
 interface RadioSelectProps {
 	options: Option[];
+	selectedOptionId: string | undefined;
 	onSelect: (value: string) => void;
 }
 
-const RadioSelect = ({ options, onSelect }: RadioSelectProps) => {
-	const [selectedValue, setSelectedValue] = useState<string>("");
-
+const RadioSelect = ({
+	options,
+	selectedOptionId,
+	onSelect,
+}: RadioSelectProps) => {
 	const handleSelect = (value: string) => {
-		setSelectedValue(value);
 		onSelect(value);
 	};
 
@@ -26,7 +27,7 @@ const RadioSelect = ({ options, onSelect }: RadioSelectProps) => {
 					<input
 						type="radio"
 						value={option.id}
-						checked={selectedValue === option.id}
+						checked={selectedOptionId === option.id}
 						onChange={() => handleSelect(option.id)}
 					/>
 					{option.title}

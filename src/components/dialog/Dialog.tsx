@@ -6,8 +6,8 @@ interface DialogProps {
 	title: string;
 	message: string;
 	isOpen: boolean;
-	children: ReactNode;
-	buttons: ButtonProps[];
+	buttons?: ButtonProps[];
+	children?: ReactNode;
 	defaultButtonLabel?: string;
 	hideDefaultButton?: boolean;
 	onClose: () => void;
@@ -18,7 +18,7 @@ const Dialog = ({
 	message,
 	isOpen,
 	children,
-	buttons,
+	buttons = [],
 	defaultButtonLabel,
 	hideDefaultButton,
 	onClose,

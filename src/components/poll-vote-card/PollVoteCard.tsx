@@ -5,6 +5,7 @@ import RadioSelect from "../common/radio-select/RadioSelect";
 import Button from "../common/button/Button";
 import LinkButton from "../common/link/LinkButton";
 import { Poll } from "../../models/poll";
+import Dialog from "../dialog/Dialog";
 
 interface PollVoteCardProps {
 	poll?: Poll;
@@ -12,6 +13,7 @@ interface PollVoteCardProps {
 
 const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 	const [selectedOptionId, setSelectedOptionId] = useState<string>();
+	const [presentingDialog, setPresentingDialog] = useState(false);
 
 	const submitIsDisabled = useMemo((): boolean => {
 		return selectedOptionId === undefined;
@@ -41,13 +43,25 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 			if (!result.ok) {
 				throw new Error("Failed to vote in poll");
 			}
+			setPresentingDialog(true);
 		} catch (error) {
 			console.error("Error while submitting vote", error);
 		}
 	};
 
+	const handleDialogClose = () => {
+		setSelectedOptionId(undefined);
+		setPresentingDialog(false);
+	};
+
 	return (
 		<Card className={styles.container}>
+			<Dialog
+				title={"Vote Successful"}
+				message={"Your vote as been counted!"}
+				isOpen={presentingDialog}
+				onClose={handleDialogClose}
+			/>
 			{poll && (
 				<>
 					<h1>{poll.title}</h1>
@@ -55,6 +69,7 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 					{poll && (
 						<RadioSelect
 							options={poll.options}
+							selectedOptionId={selectedOptionId}
 							onSelect={(value) => setSelectedOptionId(value)}
 						/>
 					)}
