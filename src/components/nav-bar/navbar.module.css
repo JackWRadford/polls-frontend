@@ -5,27 +5,23 @@
 
 .nav {
 	display: flex;
+	justify-content: space-between;
 	gap: 1.4rem;
-	align-items: flex-end;
+	align-items: center;
 	max-width: var(--max-content-width);
 
-	padding: 1rem 2rem;
+	padding: 0.6rem 2rem;
 	margin: 0 auto;
 }
 
-.nav a {
-	color: var(--secondary-color);
-	font-size: smaller;
-}
-
 .homeLink {
-	font: bold;
-	font-size: medium !important;
+	font-size: larger;
+	font-weight: bold;
 	color: var(--primary-color) !important;
 }
 
 @media screen and (max-width: 600px) {
 	.nav {
-		padding: 1rem;
+		padding: 0.6rem;
 	}
 }

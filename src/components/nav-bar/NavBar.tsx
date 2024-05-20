@@ -1,3 +1,4 @@
+import LinkButton from "../common/link/LinkButton";
 import styles from "./navbar.module.css";
 import { Link } from "react-router-dom";
 
@@ -8,7 +9,11 @@ const NavBar = () => {
 				<Link to={"/"} className={styles.homeLink}>
 					PollMaker
 				</Link>
-				<Link to={"/create-poll"}>Create Poll</Link>
+				<LinkButton
+					to={"/create-poll"}
+					label="Create"
+					level="secondary"
+				/>
 			</nav>
 		</div>
 	);
