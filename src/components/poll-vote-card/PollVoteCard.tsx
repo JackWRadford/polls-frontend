@@ -6,6 +6,7 @@ import Button from "../common/button/Button";
 import LinkButton from "../common/link/LinkButton";
 import { Poll } from "../../models/poll";
 import Dialog from "../dialog/Dialog";
+import { baseUrl } from "../../constants";
 
 interface PollVoteCardProps {
 	poll?: Poll;
@@ -30,16 +31,13 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 		});
 
 		try {
-			const result = await fetch(
-				`http://localhost:3000/polls/${id}/vote`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body,
-				}
-			);
+			const result = await fetch(`${baseUrl}/polls/${id}/vote`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body,
+			});
 			if (!result.ok) {
 				throw new Error("Failed to vote in poll");
 			}

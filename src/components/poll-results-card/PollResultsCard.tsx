@@ -4,6 +4,7 @@ import { Poll } from "../../models/poll";
 import styles from "./pollResultsCard.module.css";
 import ProgressBar from "../common/progress-bar/ProgressBar";
 import LinkButton from "../common/link/LinkButton";
+import { baseUrl } from "../../constants";
 
 interface PollResultsCardProps {
 	pollId: string;
@@ -26,7 +27,7 @@ const PollResultsCard = ({ pollId }: PollResultsCardProps) => {
 		const fetchPollResultsData = async () => {
 			try {
 				const result = await fetch(
-					`http://localhost:3000/polls/${pollId}/results`,
+					`${baseUrl}/polls/${pollId}/results`,
 					{
 						method: "GET",
 						headers: {

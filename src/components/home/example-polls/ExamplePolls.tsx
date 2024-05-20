@@ -3,6 +3,7 @@ import styles from "./examplePolls.module.css";
 import { Poll } from "../../../models/poll";
 import PollVoteCard from "../../poll-vote-card/PollVoteCard";
 import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
+import { baseUrl } from "../../../constants";
 
 type ExamplePollsResponse = {
 	polls: Poll[];
@@ -16,7 +17,7 @@ const ExamplePolls = () => {
 		const fetchPolls = async () => {
 			try {
 				const response = await fetch(
-					`http://localhost:3000/polls/examples?page=1&pageSize=6`,
+					`${baseUrl}/polls/examples?page=1&pageSize=6`,
 					{
 						method: "GET",
 					}

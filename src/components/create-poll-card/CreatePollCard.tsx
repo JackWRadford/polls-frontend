@@ -6,6 +6,7 @@ import styles from "./createPollCard.module.css";
 import PollOptionInput from "../poll-option-input/PollOptionInput";
 import ErrorMessage from "../common/error-message/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../constants";
 
 const CreatePollCard = () => {
 	const [prompt, setPrompt] = useState<string>("");
@@ -34,7 +35,7 @@ const CreatePollCard = () => {
 
 		try {
 			// POST request
-			const response = await fetch(`http://localhost:3000/polls/create`, {
+			const response = await fetch(`${baseUrl}/polls/create`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
