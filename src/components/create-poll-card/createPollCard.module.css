@@ -1,7 +1,5 @@
 .container {
-	width: calc(100% - 2rem);
-	max-width: 30rem;
-	margin-top: 3rem;
+	width: 100%;
 }
 
 .container form {
@@ -22,10 +20,4 @@
 	gap: 0.4rem;
 	padding: 0rem;
 	margin: 0rem;
-}
-
-@media screen and (max-width: 600px) {
-	.container {
-		margin-top: 1rem;
-	}
 }

@@ -1,6 +1,5 @@
 .container {
-	width: calc(100% - 2rem);
-	max-width: 30rem;
+	width: 100%;
 }
 
 .container h1 {
