@@ -11,9 +11,11 @@ interface HeroProps {
 
 const Hero = ({ titleSubtitleProps, linkButtonProps }: HeroProps) => {
 	return (
-		<div className={styles.container}>
-			<TitleSubtitle {...titleSubtitleProps} />
-			<LinkButton {...linkButtonProps} />
+		<div className={styles.containerBackground}>
+			<div className={styles.container}>
+				<TitleSubtitle {...titleSubtitleProps} />
+				<LinkButton {...linkButtonProps} />
+			</div>
 		</div>
 	);
 };

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./examplePolls.module.css";
 import { Poll } from "../../../models/poll";
 import PollVoteCard from "../../poll-vote-card/PollVoteCard";
+import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
 
 type ExamplePollsResponse = {
 	polls: Poll[];
@@ -38,6 +39,10 @@ const ExamplePolls = () => {
 
 	return (
 		<div className={styles.container}>
+			<TitleSubtitle
+				title={"Example Polls"}
+				subtitle={"Take a look at these example polls!"}
+			/>
 			<div className={styles.polls}>
 				{polls?.map((poll) => (
 					<div key={poll._id} className={styles.pollContainer}>
