@@ -14,7 +14,11 @@ interface PollVoteCardProps {
 
 const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 	const [selectedOptionId, setSelectedOptionId] = useState<string>();
-	const [presentingDialog, setPresentingDialog] = useState(false);
+	const [dialog, setDialog] = useState({
+		isPresented: false,
+		title: "",
+		message: "",
+	});
 
 	const submitIsDisabled = useMemo((): boolean => {
 		return selectedOptionId === undefined;
@@ -31,33 +35,51 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 		});
 
 		try {
-			const result = await fetch(`${baseUrl}/polls/${id}/vote`, {
+			const response = await fetch(`${baseUrl}/polls/${id}/vote`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body,
 			});
-			if (!result.ok) {
-				throw new Error("Failed to vote in poll");
+			const responseData = await response.json();
+			if (!response.ok) {
+				throw new Error(
+					responseData.message || "Failed to vote in poll"
+				);
 			}
-			setPresentingDialog(true);
-		} catch (error) {
-			console.error("Error while submitting vote", error);
+			setDialog({
+				isPresented: true,
+				title: "Vote Successful",
+				message: "Your vote as been counted!",
+			});
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			setDialog({
+				isPresented: true,
+				title: "Vote Failed",
+				message:
+					error.message ||
+					"An error occurred while submitting your vote.",
+			});
 		}
 	};
 
 	const handleDialogClose = () => {
 		setSelectedOptionId(undefined);
-		setPresentingDialog(false);
+		setDialog({
+			isPresented: false,
+			title: "",
+			message: "",
+		});
 	};
 
 	return (
 		<Card className={styles.container}>
 			<Dialog
-				title={"Vote Successful"}
-				message={"Your vote as been counted!"}
-				isOpen={presentingDialog}
+				title={dialog.title}
+				message={dialog.message}
+				isOpen={dialog.isPresented}
 				onClose={handleDialogClose}
 			/>
 			{poll && (
