@@ -27,13 +27,17 @@ const Dialog = ({
 
 	useEffect(() => {
 		if (isOpen) {
+			// Listen for the close event (esc key pressed)
+			ref.current?.addEventListener("close", () => onClose());
+			// Show the dialog as a modal
 			ref.current?.showModal();
-			document.body.classList.add("model-open");
+			document.body.classList.add("model-open"); // Block scroll
 		} else {
+			// Close the modal
 			ref.current?.close();
-			document.body.classList.remove("model-open");
+			document.body.classList.remove("model-open"); // Unblock scroll
 		}
-	}, [isOpen]);
+	}, [isOpen, onClose]);
 
 	return (
 		<dialog ref={ref} className={styles.dialog}>
