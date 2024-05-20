@@ -18,19 +18,23 @@ const CreatePollCard = () => {
 		event.preventDefault();
 		setValidationError("");
 
-		// Validation
+		// Validate the prompt.
 		if (!prompt) {
 			setValidationError("Please enter a prompt");
 			return;
-		} else if (!validateOptions()) {
+		}
+
+		// Validate the options.
+		const filteredOptions = removeEmptyOptions();
+		if (filteredOptions.length < 2) {
 			setValidationError("Please include at least two options");
 			return;
 		}
 
-		// Construct JSON body
+		// Construct JSON body.
 		const body = JSON.stringify({
 			title: prompt,
-			options: options,
+			options: filteredOptions,
 		});
 
 		try {
@@ -59,10 +63,9 @@ const CreatePollCard = () => {
 		}
 	};
 
-	// Check that there are at least two options.
-	const validateOptions = (): boolean => {
+	const removeEmptyOptions = (): string[] => {
 		const filteredOptions = options.filter((str) => str.trim() !== "");
-		return filteredOptions.length >= 2;
+		return filteredOptions;
 	};
 
 	const handleOptionChange = (value: string, index: number) => {
