@@ -3,6 +3,7 @@ import PollVoteCard from "../../components/poll-vote-card/PollVoteCard";
 import styles from "./pollVotePage.module.css";
 import { useEffect, useState } from "react";
 import { Poll } from "../../models/poll";
+import ShareCard from "../../components/share-card/ShareCard";
 
 const PollVotePage = () => {
 	const { id } = useParams();
@@ -34,6 +35,7 @@ const PollVotePage = () => {
 	return (
 		<div className={styles.container}>
 			<PollVoteCard poll={poll} />
+			<ShareCard label={"Share the poll with this URL!"} />
 		</div>
 	);
 };
