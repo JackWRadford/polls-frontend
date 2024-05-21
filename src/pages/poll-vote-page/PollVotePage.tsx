@@ -4,6 +4,7 @@ import styles from "./pollVotePage.module.css";
 import { useEffect, useState } from "react";
 import { Poll } from "../../models/poll";
 import ShareCard from "../../components/share-card/ShareCard";
+import { baseUrl } from "../../constants";
 
 const PollVotePage = () => {
 	const { id } = useParams();
@@ -12,12 +13,9 @@ const PollVotePage = () => {
 	useEffect(() => {
 		const fetchPoll = async () => {
 			try {
-				const result = await fetch(
-					`http://localhost:3000/polls/${id}`,
-					{
-						method: "GET",
-					}
-				);
+				const result = await fetch(`${baseUrl}/polls/${id}`, {
+					method: "GET",
+				});
 				if (!result.ok) {
 					console.error("Error while fetching poll.");
 				} else {
