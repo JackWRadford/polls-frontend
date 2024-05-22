@@ -12,6 +12,7 @@ const CreatePollCard = () => {
 	const [prompt, setPrompt] = useState<string>("");
 	const [options, setOptions] = useState<string[]>(["", ""]);
 	const [validationError, setValidationError] = useState<string>("");
+	const [isLoading, setIsLoading] = useState(false);
 	const navigate = useNavigate();
 
 	const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -38,6 +39,7 @@ const CreatePollCard = () => {
 		});
 
 		try {
+			setIsLoading(true);
 			// POST request
 			const response = await fetch(`${baseUrl}/polls/create`, {
 				method: "POST",
@@ -53,9 +55,11 @@ const CreatePollCard = () => {
 			} else {
 				// Navigate to the poll page
 				const insertedId: string = (await response.json()).insertedId;
+				setIsLoading(false);
 				navigate(`/${insertedId}`);
 			}
 		} catch (error) {
+			setIsLoading(false);
 			console.error("Error creating poll:", error);
 			setValidationError(
 				"Failed to create the poll. Please try again later."
@@ -127,6 +131,7 @@ const CreatePollCard = () => {
 					label={"Create Poll"}
 					onClick={() => {}}
 					type="submit"
+					isLoading={isLoading}
 				/>
 			</form>
 		</Card>

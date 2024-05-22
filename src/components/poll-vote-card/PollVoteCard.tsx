@@ -14,6 +14,7 @@ interface PollVoteCardProps {
 
 const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 	const [selectedOptionId, setSelectedOptionId] = useState<string>();
+	const [isLoading, setIsLoading] = useState(false);
 	const [dialog, setDialog] = useState({
 		isPresented: false,
 		title: "",
@@ -35,6 +36,7 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 		});
 
 		try {
+			setIsLoading(true);
 			const response = await fetch(`${baseUrl}/polls/${id}/vote`, {
 				method: "POST",
 				headers: {
@@ -48,6 +50,7 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 					responseData.message || "Failed to vote in poll"
 				);
 			}
+			setIsLoading(false);
 			setDialog({
 				isPresented: true,
 				title: "Vote Successful",
@@ -55,6 +58,7 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 			});
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
+			setIsLoading(false);
 			setDialog({
 				isPresented: true,
 				title: "Vote Failed",
@@ -105,6 +109,7 @@ const PollVoteCard = ({ poll }: PollVoteCardProps) => {
 							fitContent
 							className={styles.action}
 							disabled={submitIsDisabled}
+							isLoading={isLoading}
 						/>
 					</div>
 				</>

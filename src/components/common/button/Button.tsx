@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./button.module.css";
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import LoadingIndicator from "../loading-indicator/LoadingIndicator";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
@@ -8,6 +9,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	level?: "primary" | "secondary";
 	fitContent?: boolean;
 	children?: ReactNode;
+	isLoading?: boolean;
 }
 
 const Button = ({
@@ -16,6 +18,7 @@ const Button = ({
 	level = "primary",
 	fitContent = false,
 	children,
+	isLoading = false,
 	...rest
 }: ButtonProps) => {
 	const secondaryClass = level == "secondary" ? styles.secondary : null;
@@ -28,8 +31,9 @@ const Button = ({
 			onClick={onClick}
 			{...rest}
 		>
-			{label}
-			{children}
+			{!isLoading && label}
+			{!isLoading && children}
+			{isLoading && <LoadingIndicator />}
 		</button>
 	);
 };
