@@ -7,6 +7,7 @@ import PollVotePage from "./pages/poll-vote-page/PollVotePage.tsx";
 import CreatePollPage from "./pages/create-poll-page/CreatePollPage.tsx";
 import PollResultsPage from "./pages/poll-results-page/PollResultsPage.tsx";
 import HomePage from "./pages/home-page/HomePage.tsx";
+import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 			{
 				path: "/:id/result",
 				element: <PollResultsPage />,
+			},
+			{
+				path: "*",
+				element: <NotFoundPage />,
 			},
 		],
 	},
