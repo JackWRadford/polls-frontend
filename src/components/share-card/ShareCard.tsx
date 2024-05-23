@@ -16,10 +16,14 @@ const ShareCard = ({ label }: ShareCardProps) => {
 
 	return (
 		<Card className={styles.container}>
-			<h3>{label}</h3>
+			<h2>{label}</h2>
 			<div className={styles.linkContainer}>
 				<p>{hrefText}</p>
-				<Button onClick={copyToClipboard} level="secondary">
+				<Button
+					onClick={copyToClipboard}
+					level="secondary"
+					aria-label="Copy to clipboard"
+				>
 					<LuClipboardSignature />
 				</Button>
 			</div>
