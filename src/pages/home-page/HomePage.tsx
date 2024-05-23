@@ -1,8 +1,14 @@
 import Hero from "../../components/home/hero/Hero";
 import styles from "./homePage.module.css";
 import ExamplePolls from "../../components/home/example-polls/ExamplePolls";
+import { useEffect } from "react";
 
 const HomePage = () => {
+	useEffect(() => {
+		document.title =
+			"Poll Maker - Create polls and share them with anyone.";
+	}, []);
+
 	return (
 		<div className={styles.container}>
 			<Hero

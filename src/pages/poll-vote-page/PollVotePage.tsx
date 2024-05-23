@@ -36,6 +36,12 @@ const PollVotePage = () => {
 		fetchPoll();
 	}, [id]);
 
+	useEffect(() => {
+		document.title = `${
+			poll?.title ?? "Poll Not Found"
+		} - Vote - Poll Maker`;
+	}, [poll?.title]);
+
 	return (
 		<div className={styles.container}>
 			{!isLoading && poll && (
