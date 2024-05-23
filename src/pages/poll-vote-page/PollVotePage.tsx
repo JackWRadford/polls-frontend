@@ -37,7 +37,7 @@ const PollVotePage = () => {
 
 	return (
 		<div className={styles.container}>
-			{poll && (
+			{!isLoading && poll && (
 				<>
 					<PollVoteCard poll={poll} />
 					<ShareCard label={"Share the poll with this URL!"} />

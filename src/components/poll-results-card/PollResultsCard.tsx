@@ -1,54 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import Card from "../common/card/Card";
-import { Poll } from "../../models/poll";
 import styles from "./pollResultsCard.module.css";
 import ProgressBar from "../common/progress-bar/ProgressBar";
 import LinkButton from "../common/link/LinkButton";
-import { baseUrl } from "../../constants";
+import { PollResultResponse } from "../../pages/poll-results-page/PollResultsPage";
 
 interface PollResultsCardProps {
-	pollId: string;
+	pollResults: PollResultResponse;
 }
 
-type PollResultResponse = {
-	poll: Poll;
-	pollResultsData: {
-		optionTitle: string;
-		count: number;
-		percentage: number;
-	}[];
-	totalVoteCount: number;
-};
-
-const PollResultsCard = ({ pollId }: PollResultsCardProps) => {
-	const [pollResults, setPollResults] = useState<PollResultResponse>();
-
-	useEffect(() => {
-		const fetchPollResultsData = async () => {
-			try {
-				const result = await fetch(
-					`${baseUrl}/polls/${pollId}/results`,
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-				);
-				if (!result) {
-					throw new Error();
-				} else {
-					const resultData = await result.json();
-					setPollResults(resultData);
-				}
-			} catch (error) {
-				console.error("Error while fetching results.", error);
-			}
-		};
-
-		fetchPollResultsData();
-	}, [pollId]);
-
+const PollResultsCard = ({ pollResults }: PollResultsCardProps) => {
 	const voteCountLabel: string = useMemo(
 		() => getVoteCountLabel(pollResults?.totalVoteCount ?? 0),
 		[pollResults?.totalVoteCount]
@@ -81,7 +42,7 @@ const PollResultsCard = ({ pollId }: PollResultsCardProps) => {
 			<div className={styles.footer}>
 				<p>{`${pollResults?.totalVoteCount} ${voteCountLabel}`}</p>
 				<LinkButton
-					to={`/${pollId}`}
+					to={`/${pollResults.poll._id}`}
 					label="View Poll"
 					level="secondary"
 				/>
