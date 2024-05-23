@@ -6,6 +6,7 @@ import { Poll } from "../../models/poll";
 import ShareCard from "../../components/share-card/ShareCard";
 import { baseUrl } from "../../constants";
 import CardLoadingIndicator from "../../components/common/card-loading-indicator/CardLoadingIndicator";
+import Card from "../../components/common/card/Card";
 
 const PollVotePage = () => {
 	const { id } = useParams();
@@ -44,6 +45,11 @@ const PollVotePage = () => {
 				</>
 			)}
 			{isLoading && <CardLoadingIndicator />}
+			{!isLoading && !poll && (
+				<Card>
+					<p>Poll Not Found</p>
+				</Card>
+			)}
 		</div>
 	);
 };

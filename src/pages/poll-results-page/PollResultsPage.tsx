@@ -6,6 +6,7 @@ import { Poll } from "../../models/poll";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../constants";
 import CardLoadingIndicator from "../../components/common/card-loading-indicator/CardLoadingIndicator";
+import Card from "../../components/common/card/Card";
 
 export type PollResultResponse = {
 	poll: Poll;
@@ -53,13 +54,18 @@ const PollResultsPage = () => {
 
 	return (
 		<div className={styles.container}>
-			{!isLoading && pollResults && (
+			{!isLoading && pollResults && pollResults.poll && (
 				<>
 					<PollResultsCard pollResults={pollResults} />
 					<ShareCard label={"Share these results with this URL!"} />
 				</>
 			)}
 			{isLoading && <CardLoadingIndicator />}
+			{!isLoading && !pollResults?.poll && (
+				<Card>
+					<p>Poll Results Not Found</p>
+				</Card>
+			)}
 		</div>
 	);
 };

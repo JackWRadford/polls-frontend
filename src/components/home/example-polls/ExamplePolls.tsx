@@ -5,6 +5,7 @@ import PollVoteCard from "../../poll-vote-card/PollVoteCard";
 import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
 import { baseUrl } from "../../../constants";
 import CardLoadingIndicator from "../../common/card-loading-indicator/CardLoadingIndicator";
+import Card from "../../common/card/Card";
 
 type ExamplePollsResponse = {
 	polls: Poll[];
@@ -59,6 +60,11 @@ const ExamplePolls = () => {
 				</div>
 			)}
 			{isLoading && <CardLoadingIndicator />}
+			{!isLoading && !polls && (
+				<Card>
+					<p>No Example Polls Found</p>
+				</Card>
+			)}
 		</div>
 	);
 };
