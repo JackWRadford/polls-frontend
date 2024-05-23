@@ -4,6 +4,7 @@ import { Poll } from "../../../models/poll";
 import PollVoteCard from "../../poll-vote-card/PollVoteCard";
 import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
 import { baseUrl } from "../../../constants";
+import CardLoadingIndicator from "../../common/card-loading-indicator/CardLoadingIndicator";
 
 type ExamplePollsResponse = {
 	polls: Poll[];
@@ -12,10 +13,12 @@ type ExamplePollsResponse = {
 
 const ExamplePolls = () => {
 	const [polls, setPolls] = useState<Poll[]>();
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchPolls = async () => {
 			try {
+				setIsLoading(true);
 				const response = await fetch(
 					`${baseUrl}/polls/examples?page=1&pageSize=6`,
 					{
@@ -30,7 +33,9 @@ const ExamplePolls = () => {
 
 					setPolls(data.polls);
 				}
+				setIsLoading(false);
 			} catch (error) {
+				setIsLoading(false);
 				console.error("Error while fetching polls: ", error);
 			}
 		};
@@ -44,13 +49,16 @@ const ExamplePolls = () => {
 				title={"Example Polls"}
 				subtitle={"Take a look at these example polls!"}
 			/>
-			<div className={styles.polls}>
-				{polls?.map((poll) => (
-					<div key={poll._id} className={styles.pollContainer}>
-						<PollVoteCard poll={poll} />
-					</div>
-				))}
-			</div>
+			{!isLoading && polls && (
+				<div className={styles.polls}>
+					{polls?.map((poll) => (
+						<div key={poll._id} className={styles.pollContainer}>
+							<PollVoteCard poll={poll} />
+						</div>
+					))}
+				</div>
+			)}
+			{isLoading && <CardLoadingIndicator />}
 		</div>
 	);
 };
