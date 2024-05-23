@@ -76,7 +76,7 @@ a {
 	:root {
 		--primary-color: black;
 		--on-primary-color: white;
-		--secondary-color: gray;
+		--secondary-color: rgb(107, 107, 107);
 		--background-color: white;
 		--background-alt-color: rgb(247, 247, 247);
 		--foreground-color: white;
