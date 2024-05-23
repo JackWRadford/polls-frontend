@@ -35,7 +35,10 @@ const PollResultsCard = ({ pollResults }: PollResultsCardProps) => {
 									optionResultData.count
 								)})`}</p>
 							</div>
-							<ProgressBar value={optionResultData.percentage} />
+							<ProgressBar
+								value={optionResultData.percentage}
+								ariaLabel={`${optionResultData.optionTitle} has ${optionResultData.percentage}% of the votes.`}
+							/>
 						</li>
 					))}
 			</ul>

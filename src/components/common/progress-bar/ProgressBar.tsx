@@ -4,9 +4,14 @@ import styles from "./progressBar.module.css";
 interface ProgressBarProps {
 	value: number;
 	maxValue?: number;
+	ariaLabel?: string;
 }
 
-const ProgressBar = ({ value, maxValue = 100 }: ProgressBarProps) => {
+const ProgressBar = ({
+	value,
+	maxValue = 100,
+	ariaLabel,
+}: ProgressBarProps) => {
 	const percentage = useMemo(
 		() => Math.floor((value / maxValue) * 100),
 		[maxValue, value]
@@ -15,6 +20,8 @@ const ProgressBar = ({ value, maxValue = 100 }: ProgressBarProps) => {
 	return (
 		<div
 			className={styles.backgroundBar}
+			aria-label={ariaLabel}
+			role="progressbar"
 			aria-valuemin={0}
 			aria-valuemax={maxValue}
 			aria-valuenow={value}
