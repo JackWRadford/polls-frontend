@@ -9,3 +9,8 @@ export type PollResultResponse = {
 	}[];
 	totalVoteCount: number;
 };
+
+export type ExamplePollsResponse = {
+	polls: Poll[];
+	thereAreMorePolls: boolean;
+};

@@ -1,49 +1,12 @@
-import { useEffect, useState } from "react";
-import styles from "./examplePolls.module.css";
-
-import PollVoteCard from "../../poll-vote-card/PollVoteCard";
-import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
-import { baseUrl } from "../../../constants";
+import { useExamplePolls } from "../../../hooks/useExamplePolls";
 import CardLoadingIndicator from "../../common/card-loading-indicator/CardLoadingIndicator";
 import Card from "../../common/card/Card";
-import { Poll } from "../../../types/pollTypes";
-
-type ExamplePollsResponse = {
-	polls: Poll[];
-	thereAreMorePolls: boolean;
-};
+import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
+import PollVoteCard from "../../poll-vote-card/PollVoteCard";
+import styles from "./examplePolls.module.css";
 
 const ExamplePolls = () => {
-	const [polls, setPolls] = useState<Poll[]>();
-	const [isLoading, setIsLoading] = useState(false);
-
-	useEffect(() => {
-		const fetchPolls = async () => {
-			try {
-				setIsLoading(true);
-				const response = await fetch(
-					`${baseUrl}/polls/examples?page=1&pageSize=6`,
-					{
-						method: "GET",
-					}
-				);
-				if (!response.ok) {
-					throw new Error();
-				} else {
-					const data =
-						(await response.json()) as ExamplePollsResponse;
-
-					setPolls(data.polls);
-				}
-				setIsLoading(false);
-			} catch (error) {
-				setIsLoading(false);
-				console.error("Error while fetching polls: ", error);
-			}
-		};
-
-		fetchPolls();
-	}, []);
+	const { polls, isLoading } = useExamplePolls();
 
 	return (
 		<div className={styles.container}>
