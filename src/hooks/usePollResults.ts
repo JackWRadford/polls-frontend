@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../constants";
-import { PollResultResponse } from "../types/types";
+import { PollResultResponse } from "../types/apiTypes";
 
 export const usePollResults = (pollId?: string) => {
 	const [pollResults, setPollResults] = useState<PollResultResponse>();

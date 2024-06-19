@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./examplePolls.module.css";
-import { Poll } from "../../../models/poll";
+
 import PollVoteCard from "../../poll-vote-card/PollVoteCard";
 import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
 import { baseUrl } from "../../../constants";
 import CardLoadingIndicator from "../../common/card-loading-indicator/CardLoadingIndicator";
 import Card from "../../common/card/Card";
+import { Poll } from "../../../types/pollTypes";
 
 type ExamplePollsResponse = {
 	polls: Poll[];

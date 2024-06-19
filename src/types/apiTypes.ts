@@ -1,4 +1,4 @@
-import { Poll } from "../models/poll";
+import { Poll } from "./pollTypes";
 
 export type PollResultResponse = {
 	poll: Poll;

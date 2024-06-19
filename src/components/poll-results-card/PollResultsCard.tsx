@@ -3,7 +3,7 @@ import Card from "../common/card/Card";
 import styles from "./pollResultsCard.module.css";
 import ProgressBar from "../common/progress-bar/ProgressBar";
 import LinkButton from "../common/link/LinkButton";
-import { PollResultResponse } from "../../pages/poll-results-page/PollResultsPage";
+import { PollResultResponse } from "../../types/apiTypes";
 
 interface PollResultsCardProps {
 	pollResults: PollResultResponse;

@@ -4,9 +4,9 @@ import styles from "./pollVoteCard.module.css";
 import RadioSelect from "../common/radio-select/RadioSelect";
 import Button from "../common/button/Button";
 import LinkButton from "../common/link/LinkButton";
-import { Poll } from "../../models/poll";
 import Dialog from "../dialog/Dialog";
 import { baseUrl } from "../../constants";
+import { Poll } from "../../types/pollTypes";
 
 interface PollVoteCardProps {
 	poll?: Poll;

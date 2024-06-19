@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import PollVoteCard from "../../components/poll-vote-card/PollVoteCard";
 import styles from "./pollVotePage.module.css";
 import { useEffect, useMemo, useState } from "react";
-import { Poll } from "../../models/poll";
 import ShareCard from "../../components/share-card/ShareCard";
 import { baseUrl } from "../../constants";
 import CardLoadingIndicator from "../../components/common/card-loading-indicator/CardLoadingIndicator";
 import Card from "../../components/common/card/Card";
 import { Helmet } from "react-helmet";
+import { Poll } from "../../types/pollTypes";
 
 const PollVotePage = () => {
 	const { id } = useParams();
