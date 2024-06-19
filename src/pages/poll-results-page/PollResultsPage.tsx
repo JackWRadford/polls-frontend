@@ -3,10 +3,11 @@ import PollResultsCard from "../../components/poll-results-card/PollResultsCard"
 import styles from "./pollResultsPage.module.css";
 import ShareCard from "../../components/share-card/ShareCard";
 import { Poll } from "../../models/poll";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { baseUrl } from "../../constants";
 import CardLoadingIndicator from "../../components/common/card-loading-indicator/CardLoadingIndicator";
 import Card from "../../components/common/card/Card";
+import { Helmet } from "react-helmet";
 
 export type PollResultResponse = {
 	poll: Poll;
@@ -52,14 +53,19 @@ const PollResultsPage = () => {
 		fetchPollResultsData();
 	}, [pollId]);
 
-	useEffect(() => {
-		document.title = `${
-			pollResults?.poll?.title ?? "Poll Results Not Found"
-		} - Results - Poll Maker`;
-	}, [pollResults?.poll?.title]);
+	const documentTitle = useMemo(
+		() =>
+			`${
+				pollResults?.poll?.title ?? "Poll Results Not Found"
+			} - Results - Poll Maker`,
+		[pollResults?.poll?.title]
+	);
 
 	return (
 		<div className={styles.container}>
+			<Helmet>
+				<title>{documentTitle}</title>
+			</Helmet>
 			{!isLoading && pollResults && pollResults.poll && (
 				<>
 					<PollResultsCard pollResults={pollResults} />

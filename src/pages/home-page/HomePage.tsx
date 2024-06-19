@@ -1,16 +1,16 @@
 import Hero from "../../components/home/hero/Hero";
 import styles from "./homePage.module.css";
 import ExamplePolls from "../../components/home/example-polls/ExamplePolls";
-import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const HomePage = () => {
-	useEffect(() => {
-		document.title =
-			"Poll Maker - Create polls and share them with anyone.";
-	}, []);
-
 	return (
 		<div className={styles.container}>
+			<Helmet>
+				<title>
+					Poll Maker - Create polls and share them with anyone.
+				</title>
+			</Helmet>
 			<Hero
 				titleSubtitleProps={{
 					title: "Create and Share Polls",
