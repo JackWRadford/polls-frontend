@@ -3,8 +3,8 @@ import Button from "../common/button/Button";
 import Card from "../common/card/Card";
 import ErrorMessage from "../common/error-message/ErrorMessage";
 import TextArea from "../common/text-area/TextArea";
-import PollOptionInput from "../poll-option-input/PollOptionInput";
 import styles from "./createPollCard.module.css";
+import PollOptionInput from "./poll-option-input/PollOptionInput";
 
 const CreatePollCard = () => {
 	const {

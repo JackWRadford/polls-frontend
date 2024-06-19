@@ -1,7 +1,7 @@
-import Button from "../common/button/Button";
-import Input, { InputProps } from "../common/input/Input";
-import styles from "./pollOptionInput.module.css";
 import { HiXMark } from "react-icons/hi2";
+import Button from "../../common/button/Button";
+import Input, { InputProps } from "../../common/input/Input";
+import styles from "./pollOptionInput.module.css";
 
 interface OptionInput extends InputProps {
 	onDelete: () => void;
