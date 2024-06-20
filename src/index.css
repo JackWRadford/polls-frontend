@@ -13,6 +13,11 @@
 	--max-content-width: 1280px;
 	--max-poll-width: 40rem;
 
+	/* Switch constants */
+	--switch-thumb-size: 20px;
+	--switch-padding: 3px;
+
+	/* colors */
 	--primary-color: white;
 	--on-primary-color: black;
 	--secondary-color: gray;
