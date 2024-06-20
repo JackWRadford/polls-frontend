@@ -1,51 +1,51 @@
-import { useMemo } from "react";
-import Card from "../common/card/Card";
-import styles from "./pollResultsCard.module.css";
-import ProgressBar from "../common/progress-bar/ProgressBar";
-import LinkButton from "../common/link/LinkButton";
 import { PollResultResponse } from "../../types/apiTypes";
+import Card from "../common/card/Card";
+import LinkButton from "../common/link/LinkButton";
+import ProgressBar from "../common/progress-bar/ProgressBar";
+import styles from "./pollResultsCard.module.css";
 
 interface PollResultsCardProps {
 	pollResults: PollResultResponse;
 }
 
 const PollResultsCard = ({ pollResults }: PollResultsCardProps) => {
-	const voteCountLabel: string = useMemo(
-		() => getVoteCountLabel(pollResults?.totalVoteCount ?? 0),
-		[pollResults?.totalVoteCount]
-	);
+	const { poll, pollResultsData, totalVoteCount } = pollResults;
 
-	function getVoteCountLabel(voteCount: number): string {
-		return voteCount > 1 || voteCount === 0 ? "Votes" : "Vote";
-	}
+	const getVoteCountLabel = (voteCount: number): string => {
+		return voteCount === 1 ? "Vote" : "Votes";
+	};
+
+	const voteCountString = `${totalVoteCount} ${getVoteCountLabel(
+		totalVoteCount
+	)}`;
 
 	return (
 		<Card className={styles.container}>
-			<h1>{pollResults?.poll.title}</h1>
+			<h1>{poll.title}</h1>
 			<ul>
-				{pollResults?.pollResultsData
+				{pollResultsData
 					.sort((a, b) => b.count - a.count)
-					.map((optionResultData, index) => (
-						<li key={index}>
-							<div className={styles.itemLabels}>
-								<p>{optionResultData.optionTitle}</p>
-								<p>{`${optionResultData.percentage}% (${
-									optionResultData.count
-								} ${getVoteCountLabel(
-									optionResultData.count
-								)})`}</p>
-							</div>
-							<ProgressBar
-								value={optionResultData.percentage}
-								ariaLabel={`${optionResultData.optionTitle} has ${optionResultData.percentage}% of the votes.`}
-							/>
-						</li>
-					))}
+					.map(({ optionTitle, count, percentage }, index) => {
+						return (
+							<li key={index}>
+								<div className={styles.itemLabels}>
+									<p>{optionTitle}</p>
+									<p>{`${percentage}% (${count} ${getVoteCountLabel(
+										count
+									)})`}</p>
+								</div>
+								<ProgressBar
+									value={percentage}
+									ariaLabel={`${optionTitle} has ${percentage}% of the votes.`}
+								/>
+							</li>
+						);
+					})}
 			</ul>
 			<div className={styles.footer}>
-				<p>{`${pollResults?.totalVoteCount} ${voteCountLabel}`}</p>
+				<p>{voteCountString}</p>
 				<LinkButton
-					to={`/${pollResults.poll._id}`}
+					to={`/${poll._id}`}
 					label="View Poll"
 					level="secondary"
 				/>
