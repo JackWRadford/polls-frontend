@@ -77,6 +77,14 @@ a {
 	text-decoration: none;
 }
 
+button,
+label,
+input {
+	font-size: 0.9rem;
+	font-weight: 500;
+	font-family: inherit;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--primary-color: black;

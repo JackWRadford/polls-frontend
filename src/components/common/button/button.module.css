@@ -7,10 +7,6 @@ button {
 	border: 1px solid transparent;
 	padding: 0.6rem 1rem;
 
-	font-size: 0.9rem;
-	font-weight: 500;
-	font-family: inherit;
-
 	color: var(--on-primary-color);
 	background-color: var(--primary-color);
 
