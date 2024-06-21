@@ -2,6 +2,7 @@ import Hero from "../../components/home/hero/Hero";
 import styles from "./homePage.module.css";
 import ExamplePolls from "../../components/home/example-polls/ExamplePolls";
 import { Helmet } from "react-helmet";
+import FeaturesGrid from "../../components/features-grid/FeaturesGrid";
 
 const HomePage = () => {
 	return (
@@ -24,6 +25,7 @@ const HomePage = () => {
 				}}
 			/>
 			<ExamplePolls />
+			<FeaturesGrid />
 		</div>
 	);
 };
