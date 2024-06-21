@@ -8,7 +8,7 @@ export type Poll = {
 	title: string;
 	options: Option[];
 	createdAt: Date;
-	endsAt: Date;
+	limitVotesByIp?: boolean;
 };
 
 export type Vote = {

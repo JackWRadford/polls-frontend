@@ -7,7 +7,12 @@ export const usePollForm = () => {
 	const [options, setOptions] = useState<string[]>(["", ""]);
 	const [validationError, setValidationError] = useState<string>("");
 	const [isLoading, setIsLoading] = useState(false);
+	const [limitVotesByIp, setLimitVotesByIp] = useState(false);
 	const navigate = useNavigate();
+
+	const toggleLimitVotesByIp = () => {
+		setLimitVotesByIp((prev) => !prev);
+	};
 
 	const handlePromptChange = (
 		event: React.ChangeEvent<HTMLTextAreaElement>
@@ -61,6 +66,7 @@ export const usePollForm = () => {
 		const body = JSON.stringify({
 			title: prompt,
 			options: filteredOptions,
+			limitVotesByIp: limitVotesByIp,
 		});
 
 		try {
@@ -95,11 +101,13 @@ export const usePollForm = () => {
 	return {
 		prompt,
 		options,
+		limitVotesByIp,
 		validationError,
 		isLoading,
 		handlePromptChange,
 		handleOptionChange,
 		handleAddOption,
+		toggleLimitVotesByIp,
 		handleDeleteOption,
 		handleSubmit,
 	};

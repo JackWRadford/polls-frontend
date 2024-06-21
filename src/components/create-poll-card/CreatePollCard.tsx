@@ -2,6 +2,7 @@ import { usePollForm } from "../../hooks/usePollForm";
 import Button from "../common/button/Button";
 import Card from "../common/card/Card";
 import ErrorMessage from "../common/error-message/ErrorMessage";
+import Switch from "../common/switch/Switch";
 import TextArea from "../common/text-area/TextArea";
 import styles from "./createPollCard.module.css";
 import PollOptionInput from "./poll-option-input/PollOptionInput";
@@ -10,11 +11,13 @@ const CreatePollCard = () => {
 	const {
 		prompt,
 		options,
+		limitVotesByIp,
 		validationError,
 		isLoading,
 		handlePromptChange,
 		handleOptionChange,
 		handleAddOption,
+		toggleLimitVotesByIp,
 		handleDeleteOption,
 		handleSubmit,
 	} = usePollForm();
@@ -47,6 +50,12 @@ const CreatePollCard = () => {
 						level="secondary"
 						type="button"
 						fitContent
+					/>
+					<Switch
+						id={"limitVotesByIp"}
+						label="Limit votes by IP"
+						checked={limitVotesByIp}
+						onChange={toggleLimitVotesByIp}
 					/>
 				</div>
 				{validationError && <ErrorMessage message={validationError} />}
