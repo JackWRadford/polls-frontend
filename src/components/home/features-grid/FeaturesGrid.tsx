@@ -1,7 +1,7 @@
 import styles from "./featuresGrid.module.css";
 import { FaGlobe, FaLink, FaUnlock } from "react-icons/fa";
 import FeatureItem, { FeatureItemProps } from "./feature-item/FeatureItem";
-import TitleSubtitle from "../common/title-subtitle/TitleSubtitle";
+import TitleSubtitle from "../../common/title-subtitle/TitleSubtitle";
 
 const features: FeatureItemProps[] = [
 	{

@@ -1,7 +1,6 @@
+import Card from "../../../common/card/Card";
 import styles from "./featureItem.module.css";
 import { ReactNode } from "react";
-
-import Card from "../../common/card/Card";
 
 export interface FeatureItemProps {
 	icon: ReactNode;
