@@ -9,6 +9,7 @@ import PollResultsPage from "./pages/poll-results-page/PollResultsPage.tsx";
 import HomePage from "./pages/home-page/HomePage.tsx";
 import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
 import GenericErrorPage from "./components/generic-error-page/GenericErrorPage.tsx";
+import SignUpPage from "./pages/sign-up-page/SignUpPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <HomePage />,
+				errorElement: <GenericErrorPage />,
+			},
+			{
+				path: "/signup",
+				element: <SignUpPage />,
 				errorElement: <GenericErrorPage />,
 			},
 			{
