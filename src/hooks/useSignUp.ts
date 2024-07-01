@@ -21,6 +21,9 @@ export const useSignUp = () => {
 
 	const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		// Reset the validation error.
+		setValidationError("");
+
 		// Validate username.
 		if (!usernameIsValid(username)) {
 			setValidationError("Please enter a username.");
@@ -75,25 +78,6 @@ export const useSignUp = () => {
 		}
 	};
 
-	const usernameIsValid = (username: string): boolean => {
-		return username.trim().length > 0;
-	};
-
-	const emailIsValid = (email: string): boolean => {
-		return email.trim().includes("@");
-	};
-
-	const passwordIsValid = (
-		password: string,
-		confirmPassword: string
-	): boolean => {
-		const trimmedPassword = password.trim();
-		return (
-			trimmedPassword.length > 0 &&
-			trimmedPassword === confirmPassword.trim()
-		);
-	};
-
 	return {
 		username,
 		setUsername,
@@ -108,4 +92,22 @@ export const useSignUp = () => {
 		validationError,
 		handleSignUp,
 	};
+};
+
+const usernameIsValid = (username: string): boolean => {
+	return username.trim().length > 0;
+};
+
+const emailIsValid = (email: string): boolean => {
+	return email.trim().includes("@");
+};
+
+const passwordIsValid = (
+	password: string,
+	confirmPassword: string
+): boolean => {
+	const trimmedPassword = password.trim();
+	return (
+		trimmedPassword.length > 0 && trimmedPassword === confirmPassword.trim()
+	);
 };
