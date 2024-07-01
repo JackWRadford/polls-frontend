@@ -16,11 +16,11 @@ const NavBar = () => {
 						level="tertiary"
 					/>
 					<LinkButton
-						to={"/signup"}
-						label="Sign Up"
+						to={"/login"}
+						label="Log In"
 						level="secondary"
 					/>
-					<LinkButton to={"/login"} label="Login" />
+					<LinkButton to={"/signup"} label="Sign Up" />
 				</div>
 			</nav>
 		</div>
