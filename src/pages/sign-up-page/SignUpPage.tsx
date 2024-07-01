@@ -29,7 +29,7 @@ const SignUpPage = () => {
 			</Helmet>
 			<Card className={styles.signUpCard}>
 				<h1 className={styles.title}>Sign Up</h1>
-				<form className={styles.form}>
+				<form className={styles.form} onSubmit={handleSignUp}>
 					<Input
 						placeholder="Username"
 						value={username}
@@ -57,9 +57,10 @@ const SignUpPage = () => {
 						<ErrorMessage message={validationError} />
 					)}
 					<Button
+						type="submit"
 						className={styles.signUpButton}
 						label="Sign Up"
-						onClick={handleSignUp}
+						onClick={() => {}}
 						isLoading={isLoading}
 						disabled={signUpIsDisabled}
 					/>

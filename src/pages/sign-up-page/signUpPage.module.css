@@ -10,7 +10,7 @@
 
 .signUpCard {
 	text-align: center;
-	min-width: 22rem;
+	width: 22rem;
 }
 
 .title {
@@ -49,6 +49,5 @@
 
 	.signUpCard {
 		width: 100%;
-		min-width: auto;
 	}
 }

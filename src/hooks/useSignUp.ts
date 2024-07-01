@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { baseUrl } from "../constants";
 
 export const useSignUp = () => {
@@ -10,7 +10,17 @@ export const useSignUp = () => {
 	const [signUpIsDisabled, setSignUpIsDisabled] = useState(true);
 	const [validationError, setValidationError] = useState<string>("");
 
-	const handleSignUp = async () => {
+	useEffect(() => {
+		// Check that the fields are valid.
+		setSignUpIsDisabled(
+			!usernameIsValid(username) ||
+				!emailIsValid(email) ||
+				!passwordIsValid(password, confirmPassword)
+		);
+	}, [confirmPassword, email, password, username]);
+
+	const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		// Validate username.
 		if (!usernameIsValid(username)) {
 			setValidationError("Please enter a username.");
@@ -45,12 +55,21 @@ export const useSignUp = () => {
 				body,
 			});
 
+			const responseData = await response.json();
+
 			// Check response
 			if (!response.ok) {
-				throw new Error("Failed to create user.");
+				throw new Error(
+					responseData.message || "Failed to create user."
+				);
 			}
 		} catch (error) {
 			setIsLoading(false);
+			console.error("Error with user account creation:", error);
+			setValidationError(
+				(error as Error).message ||
+					"Failed to create account. Please try again later."
+			);
 		} finally {
 			setIsLoading(false);
 		}
