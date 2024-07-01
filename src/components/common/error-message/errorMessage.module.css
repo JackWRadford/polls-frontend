@@ -5,7 +5,6 @@
 
 	padding: 0.6rem 1rem;
 
-	border: 1px solid var(--error-color);
 	border-radius: 8px;
 
 	background-color: rgba(var(--error-color-rgb), 0.05);
@@ -13,6 +12,6 @@
 }
 
 .container p {
+	width: 100%;
 	font-size: smaller;
-	font-weight: bold;
 }
