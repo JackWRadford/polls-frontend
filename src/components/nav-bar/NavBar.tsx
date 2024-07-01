@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import LinkButton from "../common/link/LinkButton";
 import styles from "./navbar.module.css";
-import { Link } from "react-router-dom";
 
 const NavBar = () => {
 	return (
@@ -9,11 +9,19 @@ const NavBar = () => {
 				<Link to={"/"} className={styles.homeLink}>
 					PollMaker
 				</Link>
-				<LinkButton
-					to={"/create-poll"}
-					label="Create"
-					level="secondary"
-				/>
+				<div className={styles.trailingLinks}>
+					<LinkButton
+						to={"/create-poll"}
+						label="Create Poll"
+						level="tertiary"
+					/>
+					<LinkButton
+						to={"/signup"}
+						label="Sign Up"
+						level="secondary"
+					/>
+					<LinkButton to={"/login"} label="Login" />
+				</div>
 			</nav>
 		</div>
 	);

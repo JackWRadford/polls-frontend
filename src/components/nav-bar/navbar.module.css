@@ -20,6 +20,11 @@
 	color: var(--primary-color) !important;
 }
 
+.trailingLinks {
+	display: flex;
+	gap: 0.6rem;
+}
+
 @media screen and (max-width: 600px) {
 	.nav {
 		padding: 0.6rem;

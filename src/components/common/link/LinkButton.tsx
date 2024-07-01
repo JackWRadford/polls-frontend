@@ -1,11 +1,11 @@
+import clsx from "clsx";
+import { ReactNode, useMemo } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import styles from "./linkButton.module.css";
-import { ReactNode } from "react";
-import clsx from "clsx";
 
 export interface LinkButtonProps extends LinkProps {
 	label?: string;
-	level?: "primary" | "secondary";
+	level?: "primary" | "secondary" | "tertiary";
 	fitContent?: boolean;
 	children?: ReactNode;
 }
@@ -17,12 +17,21 @@ const LinkButton = ({
 	children,
 	...rest
 }: LinkButtonProps) => {
-	const secondaryClass = level == "secondary" ? styles.secondary : null;
+	const levelClass = useMemo(() => {
+		switch (level) {
+			case "primary":
+				return "";
+			case "secondary":
+				return styles.secondary;
+			case "tertiary":
+				return styles.tertiary;
+		}
+	}, [level]);
 	const buttonStyle = fitContent ? { width: "fit-content" } : {};
 
 	return (
 		<Link
-			className={clsx(styles.link, secondaryClass)}
+			className={clsx(styles.link, levelClass)}
 			style={buttonStyle}
 			{...rest}
 		>

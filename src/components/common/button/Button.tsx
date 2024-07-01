@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import styles from "./button.module.css";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode, useMemo } from "react";
 import LoadingIndicator from "../loading-indicator/LoadingIndicator";
+import styles from "./button.module.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick: () => void;
 	label?: string;
-	level?: "primary" | "secondary";
+	level?: "primary" | "secondary" | "tertiary";
 	fitContent?: boolean;
 	children?: ReactNode;
 	isLoading?: boolean;
@@ -21,13 +21,22 @@ const Button = ({
 	isLoading = false,
 	...rest
 }: ButtonProps) => {
-	const secondaryClass = level == "secondary" ? styles.secondary : null;
+	const levelClass = useMemo(() => {
+		switch (level) {
+			case "primary":
+				return "";
+			case "secondary":
+				return styles.secondary;
+			case "tertiary":
+				return styles.tertiary;
+		}
+	}, [level]);
 	const buttonStyle = fitContent ? { width: "fit-content" } : {};
 
 	return (
 		<button
 			style={buttonStyle}
-			className={clsx(styles.button, secondaryClass)}
+			className={clsx(styles.button, levelClass)}
 			onClick={onClick}
 			{...rest}
 		>

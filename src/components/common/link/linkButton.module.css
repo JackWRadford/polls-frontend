@@ -34,3 +34,10 @@
 	color: var(--text-color);
 	background-color: var(--foreground-color);
 }
+
+.tertiary {
+	border: none;
+
+	color: var(--text-color);
+	background-color: transparent;
+}
