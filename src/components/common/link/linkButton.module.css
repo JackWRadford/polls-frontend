@@ -4,7 +4,7 @@
 	justify-content: center;
 
 	border-radius: 8px;
-	border: 1px solid transparent;
+	border: none;
 	padding: 0.6rem 1rem;
 
 	font-size: 0.9rem;
@@ -29,15 +29,11 @@
 }
 
 .secondary {
-	border: 1px solid var(--border-color);
-
 	color: var(--text-color);
 	background-color: var(--foreground-color);
 }
 
 .tertiary {
-	border: none;
-
 	color: var(--text-color);
 	background-color: transparent;
 }
