@@ -3,39 +3,30 @@ import Button from "../../components/common/button/Button";
 import Card from "../../components/common/card/Card";
 import ErrorMessage from "../../components/common/error-message/ErrorMessage";
 import Input from "../../components/common/input/Input";
-import { useSignUp } from "../../hooks/useSignUp";
-import styles from "./signUpPage.module.css";
+import { useLogin } from "../../hooks/useLogin";
+import styles from "./loginPage.module.css";
 import { Link } from "react-router-dom";
 
-const SignUpPage = () => {
+const LoginPage = () => {
 	const {
-		username,
-		setUsername,
 		email,
 		setEmail,
 		password,
 		setPassword,
-		confirmPassword,
-		setConfirmPassword,
 		isLoading,
-		signUpIsDisabled,
+		loginIsDisabled,
 		validationError,
-		handleSignUp,
-	} = useSignUp();
+		handleLogin,
+	} = useLogin();
 
 	return (
 		<div className={styles.container}>
 			<Helmet>
-				<title>Poll Maker - Sign Up</title>
+				<title>Poll Maker - Login</title>
 			</Helmet>
-			<Card className={styles.signUpCard}>
-				<h1 className={styles.title}>Sign Up</h1>
-				<form className={styles.form} onSubmit={handleSignUp}>
-					<Input
-						placeholder="Username"
-						value={username}
-						onChange={setUsername}
-					/>
+			<Card className={styles.loginCard}>
+				<h1 className={styles.title}>Login</h1>
+				<form className={styles.form} onSubmit={handleLogin}>
 					<Input
 						type="email"
 						placeholder="Email"
@@ -48,31 +39,25 @@ const SignUpPage = () => {
 						value={password}
 						onChange={setPassword}
 					/>
-					<Input
-						type="password"
-						placeholder="Confirm Password"
-						value={confirmPassword}
-						onChange={setConfirmPassword}
-					/>
 					{validationError && (
 						<ErrorMessage message={validationError} />
 					)}
 					<Button
 						type="submit"
-						className={styles.signUpButton}
-						label="Sign Up"
+						className={styles.loginButton}
+						label="Login"
 						onClick={() => {}}
 						isLoading={isLoading}
-						disabled={signUpIsDisabled}
+						disabled={loginIsDisabled}
 					/>
 				</form>
-				<Link className={styles.loginPrompt} to="/login">
-					<span>Already have an account?</span>
-					<span className={styles.loginPromptLogin}> Login</span>
+				<Link className={styles.loginPrompt} to="/signup">
+					<span>Don't have an account?</span>
+					<span className={styles.loginPromptLogin}> Sign Up</span>
 				</Link>
 			</Card>
 		</div>
 	);
 };
 
-export default SignUpPage;
+export default LoginPage;

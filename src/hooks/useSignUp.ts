@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { baseUrl } from "../constants";
+import { emailIsValid } from "../utils/emailValidation";
 
 export const useSignUp = () => {
 	const [username, setUsername] = useState("");
@@ -96,10 +97,6 @@ export const useSignUp = () => {
 
 const usernameIsValid = (username: string): boolean => {
 	return username.trim().length > 0;
-};
-
-const emailIsValid = (email: string): boolean => {
-	return email.trim().includes("@");
 };
 
 const passwordIsValid = (

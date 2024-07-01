@@ -10,6 +10,7 @@ import HomePage from "./pages/home-page/HomePage.tsx";
 import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
 import GenericErrorPage from "./components/generic-error-page/GenericErrorPage.tsx";
 import SignUpPage from "./pages/sign-up-page/SignUpPage.tsx";
+import LoginPage from "./pages/login-page/LoginPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
 			{
 				path: "/signup",
 				element: <SignUpPage />,
+				errorElement: <GenericErrorPage />,
+			},
+			{
+				path: "/login",
+				element: <LoginPage />,
 				errorElement: <GenericErrorPage />,
 			},
 			{
