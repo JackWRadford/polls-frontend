@@ -4,7 +4,7 @@ button {
 	justify-content: center;
 
 	border-radius: 8px;
-	border: none;
+	border: 1px solid var(--primary-color);
 	padding: 0.6rem 1rem;
 
 	color: var(--on-primary-color);
@@ -25,11 +25,13 @@ button:disabled {
 }
 
 .secondary {
+	border: 1px solid var(--border-color);
 	color: var(--text-color);
 	background-color: var(--foreground-color);
 }
 
 .tertiary {
+	border: 1px solid transparent;
 	color: var(--text-color);
 	background-color: transparent;
 }
