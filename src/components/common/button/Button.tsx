@@ -10,6 +10,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	fitContent?: boolean;
 	children?: ReactNode;
 	isLoading?: boolean;
+	className?: string;
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
 	fitContent = false,
 	children,
 	isLoading = false,
+	className,
 	...rest
 }: ButtonProps) => {
 	const levelClass = useMemo(() => {
@@ -36,7 +38,7 @@ const Button = ({
 	return (
 		<button
 			style={buttonStyle}
-			className={clsx(styles.button, levelClass)}
+			className={clsx(styles.button, levelClass, className)}
 			onClick={onClick}
 			{...rest}
 		>

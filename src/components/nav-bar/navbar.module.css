@@ -14,19 +14,17 @@
 	margin: 0 auto;
 }
 
-.homeLink {
-	font-size: larger;
-	font-weight: bold;
-	color: var(--primary-color) !important;
-}
-
 .trailingLinks {
 	display: flex;
 	gap: 0.6rem;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	.nav {
 		padding: 0.6rem;
+	}
+
+	.trailingLinks {
+		display: none;
 	}
 }
