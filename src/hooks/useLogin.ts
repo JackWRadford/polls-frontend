@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../constants";
 import { emailIsValid } from "../utils/emailValidation";
+import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
 	const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ export const useLogin = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [loginIsDisabled, setLoginIsDisabled] = useState(true);
 	const [validationError, setValidationError] = useState<string>("");
+
+	const authContext = useAuthContext();
 
 	const navigate = useNavigate();
 
@@ -56,6 +59,8 @@ export const useLogin = () => {
 			if (!response.ok) {
 				throw new Error(responseData.message || "Failed to login.");
 			}
+
+			authContext.checkAuthentication();
 
 			// Navigate to home page.
 			navigate("/");

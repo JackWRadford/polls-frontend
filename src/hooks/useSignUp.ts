@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../constants";
 import { emailIsValid } from "../utils/emailValidation";
+import { useAuthContext } from "./useAuthContext";
 
 export const useSignUp = () => {
 	const [username, setUsername] = useState("");
@@ -11,6 +12,8 @@ export const useSignUp = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [signUpIsDisabled, setSignUpIsDisabled] = useState(true);
 	const [validationError, setValidationError] = useState<string>("");
+
+	const authContext = useAuthContext();
 
 	const navigate = useNavigate();
 
@@ -71,6 +74,8 @@ export const useSignUp = () => {
 					responseData.message || "Failed to create user."
 				);
 			}
+
+			authContext.checkAuthentication();
 
 			// Navigate to home page.
 			navigate("/");
