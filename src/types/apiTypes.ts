@@ -14,3 +14,8 @@ export type ExamplePollsResponse = {
 	polls: Poll[];
 	thereAreMorePolls: boolean;
 };
+
+export type User = {
+	email: string;
+	username: string;
+};

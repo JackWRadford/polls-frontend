@@ -47,6 +47,7 @@ export const useLogin = () => {
 					"Content-Type": "application/json",
 				},
 				body,
+				credentials: "include",
 			});
 
 			const responseData = await response.json();

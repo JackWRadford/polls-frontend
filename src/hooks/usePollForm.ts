@@ -78,6 +78,7 @@ export const usePollForm = () => {
 					"Content-Type": "application/json",
 				},
 				body,
+				credentials: "include",
 			});
 
 			// Check response
