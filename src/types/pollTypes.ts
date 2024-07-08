@@ -5,6 +5,7 @@ export type Option = {
 
 export type Poll = {
 	_id: string;
+	user_id?: string;
 	title: string;
 	options: Option[];
 	createdAt: Date;

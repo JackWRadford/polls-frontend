@@ -1,9 +1,10 @@
+import styles from "./cardLoadingIndicator.module.css";
 import Card from "../card/Card";
 import LoadingIndicator from "../loading-indicator/LoadingIndicator";
 
 const CardLoadingIndicator = () => {
 	return (
-		<Card>
+		<Card className={styles.card}>
 			<LoadingIndicator />
 		</Card>
 	);

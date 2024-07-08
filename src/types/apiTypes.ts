@@ -15,6 +15,11 @@ export type ExamplePollsResponse = {
 	thereAreMorePolls: boolean;
 };
 
+export type MyPollsResponse = {
+	polls: Poll[];
+	thereAreMorePolls: boolean;
+};
+
 export type User = {
 	email: string;
 	username: string;

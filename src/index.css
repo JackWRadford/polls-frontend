@@ -77,6 +77,12 @@ a {
 	text-decoration: none;
 }
 
+ul,
+ol {
+	list-style-type: none;
+	padding: 0;
+}
+
 button,
 label,
 input {
