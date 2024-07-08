@@ -32,7 +32,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			// Get the User object.
 			const resultData = await result.json();
 			const user: User | undefined = resultData.user;
-			console.log(user);
 			setUser(user);
 		} catch (error) {
 			setUser(undefined);
