@@ -4,8 +4,8 @@ import { IoIosMenu } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import Button from "../../common/button/Button";
 import Card from "../../common/card/Card";
-import LinkButton from "../../common/link/LinkButton";
 import HomeLink from "../home-link/HomeLink";
+import NavButtons from "../NavButtons";
 import styles from "./navMenu.module.css";
 
 const NavMenu = () => {
@@ -76,17 +76,7 @@ const NavMenu = () => {
 								<HiXMark size={28} />
 							</Button>
 						</div>
-						<LinkButton
-							to={"/create-poll"}
-							label="Create Poll"
-							level="tertiary"
-						/>
-						<LinkButton
-							to={"/login"}
-							label="Log In"
-							level="secondary"
-						/>
-						<LinkButton to={"/signup"} label="Sign Up" />
+						<NavButtons />
 					</Card>
 				</>
 			)}
