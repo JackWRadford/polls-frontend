@@ -8,6 +8,7 @@ export interface LinkButtonProps extends LinkProps {
 	level?: "primary" | "secondary" | "tertiary";
 	fitContent?: boolean;
 	children?: ReactNode;
+	className?: string;
 }
 
 const LinkButton = ({
@@ -15,6 +16,7 @@ const LinkButton = ({
 	level = "primary",
 	fitContent = false,
 	children,
+	className,
 	...rest
 }: LinkButtonProps) => {
 	const levelClass = useMemo(() => {
@@ -31,7 +33,7 @@ const LinkButton = ({
 
 	return (
 		<Link
-			className={clsx(styles.link, levelClass)}
+			className={clsx(styles.link, levelClass, className)}
 			style={buttonStyle}
 			{...rest}
 		>

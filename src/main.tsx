@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
-import PollVotePage from "./pages/poll-vote-page/PollVotePage.tsx";
-import CreatePollPage from "./pages/create-poll-page/CreatePollPage.tsx";
-import PollResultsPage from "./pages/poll-results-page/PollResultsPage.tsx";
-import HomePage from "./pages/home-page/HomePage.tsx";
-import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
 import GenericErrorPage from "./components/generic-error-page/GenericErrorPage.tsx";
-import SignUpPage from "./pages/sign-up-page/SignUpPage.tsx";
+import "./index.css";
+import AccountPage from "./pages/account-page/AccountPage.tsx";
+import CreatePollPage from "./pages/create-poll-page/CreatePollPage.tsx";
+import HomePage from "./pages/home-page/HomePage.tsx";
 import LoginPage from "./pages/login-page/LoginPage.tsx";
+import NotFoundPage from "./pages/not-found-page/NotFoundPage.tsx";
+import PollResultsPage from "./pages/poll-results-page/PollResultsPage.tsx";
+import PollVotePage from "./pages/poll-vote-page/PollVotePage.tsx";
+import SignUpPage from "./pages/sign-up-page/SignUpPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -24,7 +25,12 @@ const router = createBrowserRouter([
 				errorElement: <GenericErrorPage />,
 			},
 			{
-				path: "/signup",
+				path: "account/*",
+				element: <AccountPage />,
+				errorElement: <GenericErrorPage />,
+			},
+			{
+				path: "signup",
 				element: <SignUpPage />,
 				errorElement: <GenericErrorPage />,
 			},
