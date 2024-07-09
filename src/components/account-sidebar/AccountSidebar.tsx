@@ -9,11 +9,11 @@ interface SidebarLinks {
 const sidebarButtons: SidebarLinks[] = [
 	{
 		to: "",
-		label: "Polls",
+		label: "My Polls",
 	},
 	{
-		to: "settings",
-		label: "Settings",
+		to: "delete",
+		label: "Delete Account",
 	},
 ];
 

@@ -1,0 +1,12 @@
+.card {
+	margin-top: 1rem;
+}
+
+.card form {
+	max-width: fit-content;
+	padding-top: 1rem;
+}
+
+.card form input {
+	margin-bottom: 0.5rem;
+}
