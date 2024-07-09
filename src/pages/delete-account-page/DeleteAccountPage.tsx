@@ -1,12 +1,35 @@
-import styles from "./deleteAccountPage.module.css";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/common/button/Button";
 import Card from "../../components/common/card/Card";
 import Input from "../../components/common/input/Input";
-import { useDeleteAccount } from "../../hooks/useDeleteAccount";
+import {
+	confirmationStringPrompt,
+	useDeleteAccount,
+} from "../../hooks/useDeleteAccount";
+import styles from "./deleteAccountPage.module.css";
+import { FormEvent } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const DeleteAccountPage = () => {
-	const { isLoading, password, setPassword, deleteAccount } =
-		useDeleteAccount();
+	const {
+		enableDeletion,
+		isLoading,
+		confirmationString,
+		setConfirmationString,
+		deleteAccount,
+	} = useDeleteAccount();
+	const navigate = useNavigate();
+	const { checkAuthentication } = useAuthContext();
+
+	const handleDeleteAccount = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const accountWasDeleted = await deleteAccount();
+		if (accountWasDeleted) {
+			checkAuthentication();
+			navigate("/");
+		}
+	};
+
 	return (
 		<div>
 			<h1>Delete Account</h1>
@@ -15,18 +38,18 @@ const DeleteAccountPage = () => {
 				<p>
 					All polls and data will be deleted and cannot be recovered.
 				</p>
-				<form>
+				<form onSubmit={handleDeleteAccount}>
 					<Input
-						type="password"
-						placeholder={"Enter Password"}
-						value={password}
-						onChange={setPassword}
+						placeholder={"Delete Account"}
+						value={confirmationString}
+						onChange={setConfirmationString}
 					/>
 					<Button
-						onClick={deleteAccount}
-						label="Delete Account"
+						type="submit"
+						onClick={() => {}}
+						label={confirmationStringPrompt}
 						isLoading={isLoading}
-						disabled={password.length < 1}
+						disabled={!enableDeletion}
 					/>
 				</form>
 			</Card>

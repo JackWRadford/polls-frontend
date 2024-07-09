@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { baseUrl } from "../constants";
 
+export const confirmationStringPrompt = "Delete Account";
+
 export const useDeleteAccount = () => {
-	const [password, setPassword] = useState("");
+	const [enableDeletion, setEnableDeletion] = useState(false);
+	const [confirmationString, setConfirmationString] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+
+	useEffect(() => {
+		const confirmationStringMatches = (): boolean => {
+			return (
+				confirmationString.toLocaleLowerCase().trim() ===
+				confirmationStringPrompt.toLocaleLowerCase().trim()
+			);
+		};
+
+		setEnableDeletion(confirmationStringMatches());
+	}, [confirmationString]);
 
 	const deleteAccount = async (): Promise<boolean> => {
 		try {
@@ -27,5 +41,11 @@ export const useDeleteAccount = () => {
 		}
 	};
 
-	return { isLoading, password, setPassword, deleteAccount };
+	return {
+		enableDeletion,
+		isLoading,
+		confirmationString,
+		setConfirmationString,
+		deleteAccount,
+	};
 };
