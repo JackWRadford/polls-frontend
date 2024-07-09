@@ -56,6 +56,7 @@ const NavMenu = () => {
 	return (
 		<>
 			<Button
+				aria-label={`${menuIsOpen ? "Close" : "Open"} navigation menu`}
 				onClick={toggleMenu}
 				level="tertiary"
 				className={styles.menuButton}
