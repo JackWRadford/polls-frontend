@@ -4,7 +4,7 @@ import LoadingIndicator from "../loading-indicator/LoadingIndicator";
 import styles from "./button.module.css";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	onClick: () => void;
+	onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 	label?: string;
 	level?: "primary" | "secondary" | "tertiary";
 	fitContent?: boolean;

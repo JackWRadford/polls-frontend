@@ -6,14 +6,24 @@ import { useMyPolls } from "../../hooks/useMyPolls";
 import styles from "./myPollsPage.module.css";
 
 const MyPollsPage = () => {
-	const { polls, isLoading, thereAreMorePolls, loadMorePolls } = useMyPolls();
+	const {
+		polls,
+		isLoading,
+		thereAreMorePolls,
+		loadMorePolls,
+		removeDeletedPoll,
+	} = useMyPolls();
 
 	return (
 		<div className={styles.container}>
 			<h1>My Polls</h1>
 			<ul className={styles.pollsList}>
 				{polls.map((poll, index) => (
-					<PollListItem key={index} {...poll} />
+					<PollListItem
+						key={index}
+						poll={poll}
+						onDelete={removeDeletedPoll}
+					/>
 				))}
 			</ul>
 			{thereAreMorePolls && (

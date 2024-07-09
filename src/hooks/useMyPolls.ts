@@ -51,5 +51,17 @@ export const useMyPolls = () => {
 		}
 	};
 
-	return { polls, isLoading, thereAreMorePolls, loadMorePolls };
+	const removeDeletedPoll = (idOfDeletedPoll: string) => {
+		setPolls((prev) => {
+			return prev.filter((poll) => poll._id !== idOfDeletedPoll);
+		});
+	};
+
+	return {
+		polls,
+		isLoading,
+		thereAreMorePolls,
+		loadMorePolls,
+		removeDeletedPoll,
+	};
 };
