@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
 import Button from "../common/button/Button";
@@ -6,8 +7,18 @@ import LinkButton from "../common/link/LinkButton";
 const NavButtons = () => {
 	const authContext = useAuthContext();
 	const { logout } = useLogout();
+	const [width, setWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		const handleResize = () => setWidth(window.innerWidth);
+
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	const userIsLoggedIn = !!authContext.user;
+	const showAccountSidebarLinks = width <= 740;
 
 	return (
 		<>
@@ -18,8 +29,24 @@ const NavButtons = () => {
 			/>
 			{userIsLoggedIn ? (
 				<>
+					{showAccountSidebarLinks && (
+						<LinkButton
+							to={"/account"}
+							label="My Polls"
+							level="tertiary"
+						/>
+					)}
 					<Button onClick={logout} label="Logout" level="secondary" />
-					<LinkButton to={"/account"} label="Account" />
+					{showAccountSidebarLinks && (
+						<LinkButton
+							to={"/account/delete"}
+							label="Delete Account"
+							level="secondary"
+						/>
+					)}
+					{!showAccountSidebarLinks && (
+						<LinkButton to={"/account"} label="Account" />
+					)}
 				</>
 			) : (
 				<>

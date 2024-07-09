@@ -5,8 +5,15 @@
 	min-width: 14rem;
 	border-right: 1px solid var(--border-color);
 	padding-right: 1rem;
+	margin-right: 1rem;
 }
 
 .link {
 	justify-content: flex-start;
+}
+
+@media (max-width: 740px) {
+	.sideBar {
+		display: none;
+	}
 }
