@@ -1,8 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../constants";
 import { emailIsValid } from "../utils/emailValidation";
 import { useAuthContext } from "./useAuthContext";
-import { apiUrl } from "../constants";
 
 export const useSignUp = () => {
 	const [username, setUsername] = useState("");
@@ -14,8 +13,6 @@ export const useSignUp = () => {
 	const [validationError, setValidationError] = useState<string>("");
 
 	const authContext = useAuthContext();
-
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		// Check that the fields are valid.
@@ -75,10 +72,7 @@ export const useSignUp = () => {
 				);
 			}
 
-			authContext.checkAuthentication();
-
-			// Navigate to home page.
-			navigate("/");
+			authContext.loginOrSignUp();
 		} catch (error) {
 			setIsLoading(false);
 			console.error("Error with user account creation:", error);

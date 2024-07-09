@@ -1,11 +1,13 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { User } from "../types/apiTypes";
 import { apiUrl } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 interface IAuthContext {
 	user?: User;
 	checkAuthentication: () => Promise<boolean>;
 	logout: () => void;
+	loginOrSignUp: () => void;
 }
 
 const AuthContext = createContext<IAuthContext | undefined>(undefined);
@@ -16,10 +18,12 @@ interface AuthProviderProps {
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [user, setUser] = useState<User | undefined>();
+	const navigate = useNavigate();
 
 	/** Check if the user is authenticated. */
 	const checkAuthentication = async (): Promise<boolean> => {
 		try {
+			console.log("checkAuthentication");
 			const result = await fetch(`${apiUrl}/api/auth/me`, {
 				method: "GET",
 				credentials: "include",
@@ -35,11 +39,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			setUser(user);
 			return user !== undefined;
 		} catch (error) {
-			setUser(undefined);
 			console.error(
 				"Error while checking for authenticated user: ",
 				error
 			);
+			setUser(undefined);
 			return false;
 		}
 	};
@@ -50,10 +54,21 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
 	const logout = () => {
 		setUser(undefined);
+		navigate("/");
+	};
+
+	const loginOrSignUp = async () => {
+		if (await checkAuthentication()) {
+			navigate("/account/my-polls");
+		} else {
+			navigate("/");
+		}
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, checkAuthentication, logout }}>
+		<AuthContext.Provider
+			value={{ user, checkAuthentication, logout, loginOrSignUp }}
+		>
 			{children}
 		</AuthContext.Provider>
 	);

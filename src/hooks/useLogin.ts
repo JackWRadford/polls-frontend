@@ -1,8 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../constants";
 import { emailIsValid } from "../utils/emailValidation";
 import { useAuthContext } from "./useAuthContext";
-import { apiUrl } from "../constants";
 
 export const useLogin = () => {
 	const [email, setEmail] = useState("");
@@ -12,8 +11,6 @@ export const useLogin = () => {
 	const [validationError, setValidationError] = useState<string>("");
 
 	const authContext = useAuthContext();
-
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		// Check that the fields are valid.
@@ -60,10 +57,7 @@ export const useLogin = () => {
 				throw new Error(responseData.message || "Failed to login.");
 			}
 
-			authContext.checkAuthentication();
-
-			// Navigate to home page.
-			navigate("/");
+			authContext.loginOrSignUp();
 		} catch (error) {
 			setIsLoading(false);
 			console.error("Error with user login:", error);

@@ -1,24 +1,24 @@
-// import { useEffect, useState } from "react";
-// import { useAuthContext } from "../../hooks/useAuthContext";
-// import { useLogout } from "../../hooks/useLogout";
-// import Button from "../common/button/Button";
+import { useEffect, useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useLogout } from "../../hooks/useLogout";
+import Button from "../common/button/Button";
 import LinkButton from "../common/link/LinkButton";
 
 const NavButtons = () => {
-	// const authContext = useAuthContext();
-	// const { logout } = useLogout();
-	// const [width, setWidth] = useState(window.innerWidth);
+	const authContext = useAuthContext();
+	const { logout } = useLogout();
+	const [width, setWidth] = useState(window.innerWidth);
 
-	// useEffect(() => {
-	// 	const handleResize = () => setWidth(window.innerWidth);
+	useEffect(() => {
+		const handleResize = () => setWidth(window.innerWidth);
 
-	// 	window.addEventListener("resize", handleResize);
+		window.addEventListener("resize", handleResize);
 
-	// 	return () => window.removeEventListener("resize", handleResize);
-	// }, []);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
-	// const userIsLoggedIn = !!authContext.user;
-	// const showAccountSidebarLinks = width <= 740;
+	const userIsLoggedIn = !!authContext.user;
+	const showAccountSidebarLinks = width <= 740;
 
 	return (
 		<>
@@ -27,7 +27,7 @@ const NavButtons = () => {
 				label="Create Poll"
 				level="tertiary"
 			/>
-			{/* {userIsLoggedIn ? (
+			{userIsLoggedIn ? (
 				<>
 					{showAccountSidebarLinks && (
 						<LinkButton
@@ -57,7 +57,7 @@ const NavButtons = () => {
 					/>
 					<LinkButton to={"/signup"} label="Sign Up" />
 				</>
-			)} */}
+			)}
 		</>
 	);
 };
