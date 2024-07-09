@@ -17,7 +17,10 @@ const NavButtons = () => {
 				level="tertiary"
 			/>
 			{userIsLoggedIn ? (
-				<Button onClick={logout} label="Logout" level="secondary" />
+				<>
+					<Button onClick={logout} label="Logout" level="secondary" />
+					<LinkButton to={"/account"} label="Account" />
+				</>
 			) : (
 				<>
 					<LinkButton
