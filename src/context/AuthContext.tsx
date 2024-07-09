@@ -4,7 +4,7 @@ import { User } from "../types/apiTypes";
 
 interface IAuthContext {
 	user?: User;
-	checkAuthentication: () => void;
+	checkAuthentication: () => Promise<boolean>;
 	logout: () => void;
 }
 
@@ -18,7 +18,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [user, setUser] = useState<User | undefined>();
 
 	/** Check if the user is authenticated. */
-	const checkAuthentication = async () => {
+	const checkAuthentication = async (): Promise<boolean> => {
 		try {
 			const result = await fetch(`${baseUrl}/auth/me`, {
 				method: "GET",
@@ -33,12 +33,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 			const resultData = await result.json();
 			const user: User | undefined = resultData.user;
 			setUser(user);
+			return user !== undefined;
 		} catch (error) {
 			setUser(undefined);
 			console.error(
 				"Error while checking for authenticated user: ",
 				error
 			);
+			return false;
 		}
 	};
 
