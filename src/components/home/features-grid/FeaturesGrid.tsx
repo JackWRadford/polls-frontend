@@ -31,8 +31,8 @@ const FeaturesGrid = () => {
 					subtitle={"Create a reliable, useful poll in seconds."}
 				/>
 				<div className={styles.featuresGrid}>
-					{features.map((feature) => (
-						<FeatureItem {...feature} />
+					{features.map((feature, index) => (
+						<FeatureItem key={index} {...feature} />
 					))}
 				</div>
 			</div>
