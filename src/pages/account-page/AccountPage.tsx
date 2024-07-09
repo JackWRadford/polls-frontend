@@ -26,7 +26,7 @@ const AccountPage = () => {
 			<AccountSidebar />
 			<div className={styles.content}>
 				<Routes>
-					<Route path="" element={<MyPollsPage />} />
+					<Route path="my-polls" element={<MyPollsPage />} />
 					<Route path="delete" element={<DeleteAccountPage />} />
 				</Routes>
 			</div>

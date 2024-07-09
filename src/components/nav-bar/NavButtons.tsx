@@ -31,7 +31,7 @@ const NavButtons = () => {
 				<>
 					{showAccountSidebarLinks && (
 						<LinkButton
-							to={"/account"}
+							to={"/account/my-polls"}
 							label="My Polls"
 							level="tertiary"
 						/>
@@ -45,7 +45,7 @@ const NavButtons = () => {
 						/>
 					)}
 					{!showAccountSidebarLinks && (
-						<LinkButton to={"/account"} label="Account" />
+						<LinkButton to={"/account/my-polls"} label="Account" />
 					)}
 				</>
 			) : (

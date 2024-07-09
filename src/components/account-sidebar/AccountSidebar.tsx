@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import LinkButton from "../common/link/LinkButton";
 import styles from "./accountSidebar.module.css";
 
@@ -8,7 +9,7 @@ interface SidebarLinks {
 
 const sidebarButtons: SidebarLinks[] = [
 	{
-		to: "",
+		to: "my-polls",
 		label: "My Polls",
 	},
 	{
@@ -18,6 +19,9 @@ const sidebarButtons: SidebarLinks[] = [
 ];
 
 const AccountSidebar = () => {
+	const location = useLocation();
+	const currentPath = location.pathname.split("/").pop();
+
 	return (
 		<div className={styles.sideBar}>
 			{sidebarButtons.map((sidebarButton, index) => (
@@ -25,7 +29,11 @@ const AccountSidebar = () => {
 					key={index}
 					className={styles.link}
 					{...sidebarButton}
-					level="secondary"
+					level={
+						currentPath === sidebarButton.to
+							? "secondary"
+							: "tertiary"
+					}
 				/>
 			))}
 		</div>
