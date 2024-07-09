@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 import { Poll } from "../types/pollTypes";
 
 export const usePoll = (pollId?: string) => {
@@ -11,7 +11,7 @@ export const usePoll = (pollId?: string) => {
 		const fetchPoll = async () => {
 			try {
 				setIsLoading(true);
-				const result = await fetch(`${baseUrl}/polls/${pollId}`, {
+				const result = await fetch(`${apiUrl}/api/polls/${pollId}`, {
 					method: "GET",
 				});
 				if (!result.ok) {

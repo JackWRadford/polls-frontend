@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 
 export const useDeletePoll = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -7,10 +7,13 @@ export const useDeletePoll = () => {
 	const deletePoll = async (pollId: string): Promise<boolean> => {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${baseUrl}/polls/${pollId}/delete`, {
-				method: "POST",
-				credentials: "include",
-			});
+			const response = await fetch(
+				`${apiUrl}/api/polls/${pollId}/delete`,
+				{
+					method: "POST",
+					credentials: "include",
+				}
+			);
 
 			if (!response.ok) {
 				throw new Error("Bad Response");

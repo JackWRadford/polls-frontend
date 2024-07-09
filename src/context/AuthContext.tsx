@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { baseUrl } from "../constants";
 import { User } from "../types/apiTypes";
+import { apiUrl } from "../constants";
 
 interface IAuthContext {
 	user?: User;
@@ -20,7 +20,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 	/** Check if the user is authenticated. */
 	const checkAuthentication = async (): Promise<boolean> => {
 		try {
-			const result = await fetch(`${baseUrl}/auth/me`, {
+			const result = await fetch(`${apiUrl}/api/auth/me`, {
 				method: "GET",
 				credentials: "include",
 			});

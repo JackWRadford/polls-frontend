@@ -1,4 +1,4 @@
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
@@ -6,7 +6,7 @@ export const useLogout = () => {
 
 	const logout = async () => {
 		try {
-			const result = await fetch(`${baseUrl}/auth/logout`, {
+			const result = await fetch(`${apiUrl}/api/auth/logout`, {
 				method: "POST",
 				credentials: "include",
 			});

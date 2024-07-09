@@ -1,6 +1,10 @@
 {
     "rewrites": [
         { "source": "/robots.txt", "destination": "/robots.txt" },
-        { "source": "/(.*)", "destination": "/" }
+        { "source": "/(.*)", "destination": "/" },
+        {
+            "source": "/api/(.*)",
+            "destination": "https://poll-maker-backend-c09c67daefc5.herokuapp.com/api/$1"
+        }
     ]
 }

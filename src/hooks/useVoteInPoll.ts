@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 
 export const useVoteInPoll = (pollId?: string) => {
 	const [selectedOptionId, setSelectedOptionId] = useState<string>();
@@ -34,7 +34,7 @@ export const useVoteInPoll = (pollId?: string) => {
 
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${baseUrl}/polls/${pollId}/vote`, {
+			const response = await fetch(`${apiUrl}/api/polls/${pollId}/vote`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

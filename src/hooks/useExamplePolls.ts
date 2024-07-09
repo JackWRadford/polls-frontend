@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 import { ExamplePollsResponse } from "../types/apiTypes";
 import { Poll } from "../types/pollTypes";
 
@@ -12,7 +12,7 @@ export const useExamplePolls = () => {
 			try {
 				setIsLoading(true);
 				const response = await fetch(
-					`${baseUrl}/polls/examples?page=1&pageSize=6`,
+					`${apiUrl}/api/polls/examples?page=1&pageSize=6`,
 					{
 						method: "GET",
 					}

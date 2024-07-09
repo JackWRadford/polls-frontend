@@ -1,8 +1,8 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { baseUrl } from "../constants";
 import { emailIsValid } from "../utils/emailValidation";
 import { useAuthContext } from "./useAuthContext";
+import { apiUrl } from "../constants";
 
 export const useSignUp = () => {
 	const [username, setUsername] = useState("");
@@ -57,7 +57,7 @@ export const useSignUp = () => {
 
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${baseUrl}/auth/signup`, {
+			const response = await fetch(`${apiUrl}/api/auth/signup`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

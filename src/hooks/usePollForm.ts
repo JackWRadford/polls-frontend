@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 
 export const usePollForm = () => {
 	const [prompt, setPrompt] = useState<string>("");
@@ -72,7 +72,7 @@ export const usePollForm = () => {
 		try {
 			setIsLoading(true);
 			// POST request
-			const response = await fetch(`${baseUrl}/polls/create`, {
+			const response = await fetch(`${apiUrl}/api/polls/create`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { baseUrl } from "../constants";
+import { apiUrl } from "../constants";
 
 export const confirmationStringPrompt = "Delete Account";
 
@@ -22,7 +22,7 @@ export const useDeleteAccount = () => {
 	const deleteAccount = async (): Promise<boolean> => {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${baseUrl}/auth/delete`, {
+			const response = await fetch(`${apiUrl}/api/auth/delete`, {
 				method: "POST",
 				credentials: "include",
 			});
