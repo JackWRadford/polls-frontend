@@ -1,24 +1,24 @@
 .footerWrapper {
-	background-color: var(--background-color);
-	border-top: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .footer {
-	display: flex;
-	align-items: center;
-	max-width: var(--max-content-width);
+  display: flex;
+  align-items: center;
+  max-width: var(--max-content-width);
 
-	padding: 1rem 2rem;
-	margin: 0 auto;
+  padding: 1rem 2rem;
+  margin: 0 auto;
 }
 
 .footer p {
-	font-size: smaller;
-	color: var(--secondary-color);
+  font-size: smaller;
+  color: var(--secondary-color);
 }
 
 @media screen and (max-width: 600px) {
-	.footer {
-		padding: 1rem;
-	}
+  .footer {
+    padding: 1rem;
+  }
 }

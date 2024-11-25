@@ -1,16 +1,16 @@
 input {
-	border-radius: 8px;
-	padding: 0.6rem;
+  border-radius: 8px;
+  padding: 0.6rem;
 
-	border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
 
-	width: 100%;
-	box-sizing: border-box;
+  width: 100%;
+  box-sizing: border-box;
 
-	background-color: var(--foreground-color);
+  background-color: var(--foreground-color);
 }
 
 input:focus,
 input:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color;
 }

@@ -4,113 +4,111 @@ import { emailIsValid } from "../utils/emailValidation";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignUp = () => {
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
-	const [signUpIsDisabled, setSignUpIsDisabled] = useState(true);
-	const [validationError, setValidationError] = useState<string>("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [signUpIsDisabled, setSignUpIsDisabled] = useState(true);
+  const [validationError, setValidationError] = useState<string>("");
 
-	const authContext = useAuthContext();
+  const authContext = useAuthContext();
 
-	useEffect(() => {
-		// Check that the fields are valid.
-		setSignUpIsDisabled(
-			!usernameIsValid(username) ||
-				!emailIsValid(email) ||
-				!passwordIsValid(password, confirmPassword)
-		);
-	}, [confirmPassword, email, password, username]);
+  useEffect(() => {
+    // Check that the fields are valid.
+    setSignUpIsDisabled(
+      !usernameIsValid(username) ||
+        !emailIsValid(email) ||
+        !passwordIsValid(password, confirmPassword),
+    );
+  }, [confirmPassword, email, password, username]);
 
-	const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		// Reset the validation error.
-		setValidationError("");
+  const handleSignUp = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Reset the validation error.
+    setValidationError("");
 
-		// Validate username.
-		if (!usernameIsValid(username)) {
-			setValidationError("Please enter a username.");
-			return;
-		}
+    // Validate username.
+    if (!usernameIsValid(username)) {
+      setValidationError("Please enter a username.");
+      return;
+    }
 
-		// Validate email.
-		if (!emailIsValid(email)) {
-			setValidationError("Please enter a valid email address.");
-			return;
-		}
+    // Validate email.
+    if (!emailIsValid(email)) {
+      setValidationError("Please enter a valid email address.");
+      return;
+    }
 
-		// Validate password.
-		if (!passwordIsValid(password, confirmPassword)) {
-			setValidationError("Please enter matching passwords.");
-			return;
-		}
+    // Validate password.
+    if (!passwordIsValid(password, confirmPassword)) {
+      setValidationError("Please enter matching passwords.");
+      return;
+    }
 
-		const body = JSON.stringify({
-			username: username.trim(),
-			email: email.trim(),
-			password: password.trim(),
-		});
+    const body = JSON.stringify({
+      username: username.trim(),
+      email: email.trim(),
+      password: password.trim(),
+    });
 
-		try {
-			setIsLoading(true);
-			const response = await fetch(`${apiUrl}/api/auth/signup`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body,
-				credentials: "include",
-			});
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${apiUrl}/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body,
+        credentials: "include",
+      });
 
-			const responseData = await response.json();
+      const responseData = await response.json();
 
-			// Check response
-			if (!response.ok) {
-				throw new Error(
-					responseData.message || "Failed to create user."
-				);
-			}
+      // Check response
+      if (!response.ok) {
+        throw new Error(responseData.message || "Failed to create user.");
+      }
 
-			authContext.loginOrSignUp();
-		} catch (error) {
-			setIsLoading(false);
-			console.error("Error with user account creation:", error);
-			setValidationError(
-				(error as Error).message ||
-					"Failed to create account. Please try again later."
-			);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+      authContext.loginOrSignUp();
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error with user account creation:", error);
+      setValidationError(
+        (error as Error).message ||
+          "Failed to create account. Please try again later.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	return {
-		username,
-		setUsername,
-		email,
-		setEmail,
-		password,
-		setPassword,
-		confirmPassword,
-		setConfirmPassword,
-		isLoading,
-		signUpIsDisabled,
-		validationError,
-		handleSignUp,
-	};
+  return {
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    confirmPassword,
+    setConfirmPassword,
+    isLoading,
+    signUpIsDisabled,
+    validationError,
+    handleSignUp,
+  };
 };
 
 const usernameIsValid = (username: string): boolean => {
-	return username.trim().length > 0;
+  return username.trim().length > 0;
 };
 
 const passwordIsValid = (
-	password: string,
-	confirmPassword: string
+  password: string,
+  confirmPassword: string,
 ): boolean => {
-	const trimmedPassword = password.trim();
-	return (
-		trimmedPassword.length > 0 && trimmedPassword === confirmPassword.trim()
-	);
+  const trimmedPassword = password.trim();
+  return (
+    trimmedPassword.length > 0 && trimmedPassword === confirmPassword.trim()
+  );
 };

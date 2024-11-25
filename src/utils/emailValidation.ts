@@ -1,3 +1,3 @@
 export const emailIsValid = (email: string): boolean => {
-	return email.trim().includes("@");
+  return email.trim().includes("@");
 };

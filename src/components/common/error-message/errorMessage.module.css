@@ -1,17 +1,17 @@
 .container {
-	display: flex;
-	align-items: center;
-	gap: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 
-	padding: 0.6rem 1rem;
+  padding: 0.6rem 1rem;
 
-	border-radius: 8px;
+  border-radius: 8px;
 
-	background-color: rgba(var(--error-color-rgb), 0.05);
-	color: var(--error-color);
+  background-color: rgba(var(--error-color-rgb), 0.05);
+  color: var(--error-color);
 }
 
 .container p {
-	width: 100%;
-	font-size: smaller;
+  width: 100%;
+  font-size: smaller;
 }

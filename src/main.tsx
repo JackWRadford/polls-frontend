@@ -14,57 +14,57 @@ import PollVotePage from "./pages/poll-vote-page/PollVotePage.tsx";
 import SignUpPage from "./pages/sign-up-page/SignUpPage.tsx";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-		errorElement: <GenericErrorPage />,
-		children: [
-			{
-				path: "/",
-				element: <HomePage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "account/*",
-				element: <AccountPage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "signup",
-				element: <SignUpPage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "/login",
-				element: <LoginPage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "/create-poll",
-				element: <CreatePollPage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "/:id",
-				element: <PollVotePage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "/:id/result",
-				element: <PollResultsPage />,
-				errorElement: <GenericErrorPage />,
-			},
-			{
-				path: "*",
-				element: <NotFoundPage />,
-				errorElement: <GenericErrorPage />,
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <GenericErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "account/*",
+        element: <AccountPage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "signup",
+        element: <SignUpPage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "/create-poll",
+        element: <CreatePollPage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "/:id",
+        element: <PollVotePage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "/:id/result",
+        element: <PollResultsPage />,
+        errorElement: <GenericErrorPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+        errorElement: <GenericErrorPage />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<RouterProvider router={router} />
-	</React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
 );

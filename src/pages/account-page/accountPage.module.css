@@ -1,17 +1,17 @@
 .pageContainer {
-	display: flex;
-	max-width: var(--max-content-width);
+  display: flex;
+  max-width: var(--max-content-width);
 
-	padding: 2rem;
-	margin: 0 auto;
+  padding: 2rem;
+  margin: 0 auto;
 }
 
 .content {
-	width: 100%;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
-	.pageContainer {
-		padding: 1rem;
-	}
+  .pageContainer {
+    padding: 1rem;
+  }
 }

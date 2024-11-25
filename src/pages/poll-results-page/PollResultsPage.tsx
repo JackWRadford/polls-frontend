@@ -9,36 +9,36 @@ import { Helmet } from "react-helmet";
 import { usePollResults } from "../../hooks/usePollResults";
 
 const PollResultsPage = () => {
-	const { id: pollId } = useParams();
-	const { pollResults, isLoading } = usePollResults(pollId);
+  const { id: pollId } = useParams();
+  const { pollResults, isLoading } = usePollResults(pollId);
 
-	const documentTitle = useMemo(
-		() =>
-			`${
-				pollResults?.poll?.title ?? "Poll Results Not Found"
-			} - Results - Poll Maker`,
-		[pollResults?.poll?.title]
-	);
+  const documentTitle = useMemo(
+    () =>
+      `${
+        pollResults?.poll?.title ?? "Poll Results Not Found"
+      } - Results - Poll Maker`,
+    [pollResults?.poll?.title],
+  );
 
-	return (
-		<div className={styles.container}>
-			<Helmet>
-				<title>{documentTitle}</title>
-			</Helmet>
-			{isLoading && <CardLoadingIndicator />}
-			{!isLoading && pollResults && pollResults.poll && (
-				<>
-					<PollResultsCard pollResults={pollResults} />
-					<ShareCard label={"Share these results with this URL!"} />
-				</>
-			)}
-			{!isLoading && !pollResults?.poll && (
-				<Card>
-					<p>Poll Results Not Found</p>
-				</Card>
-			)}
-		</div>
-	);
+  return (
+    <div className={styles.container}>
+      <Helmet>
+        <title>{documentTitle}</title>
+      </Helmet>
+      {isLoading && <CardLoadingIndicator />}
+      {!isLoading && pollResults && pollResults.poll && (
+        <>
+          <PollResultsCard pollResults={pollResults} />
+          <ShareCard label={"Share these results with this URL!"} />
+        </>
+      )}
+      {!isLoading && !pollResults?.poll && (
+        <Card>
+          <p>Poll Results Not Found</p>
+        </Card>
+      )}
+    </div>
+  );
 };
 
 export default PollResultsPage;

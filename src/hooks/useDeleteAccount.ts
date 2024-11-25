@@ -4,48 +4,48 @@ import { apiUrl } from "../constants";
 export const confirmationStringPrompt = "Delete Account";
 
 export const useDeleteAccount = () => {
-	const [enableDeletion, setEnableDeletion] = useState(false);
-	const [confirmationString, setConfirmationString] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+  const [enableDeletion, setEnableDeletion] = useState(false);
+  const [confirmationString, setConfirmationString] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-	useEffect(() => {
-		const confirmationStringMatches = (): boolean => {
-			return (
-				confirmationString.toLocaleLowerCase().trim() ===
-				confirmationStringPrompt.toLocaleLowerCase().trim()
-			);
-		};
+  useEffect(() => {
+    const confirmationStringMatches = (): boolean => {
+      return (
+        confirmationString.toLocaleLowerCase().trim() ===
+        confirmationStringPrompt.toLocaleLowerCase().trim()
+      );
+    };
 
-		setEnableDeletion(confirmationStringMatches());
-	}, [confirmationString]);
+    setEnableDeletion(confirmationStringMatches());
+  }, [confirmationString]);
 
-	const deleteAccount = async (): Promise<boolean> => {
-		try {
-			setIsLoading(true);
-			const response = await fetch(`${apiUrl}/api/auth/delete`, {
-				method: "POST",
-				credentials: "include",
-			});
+  const deleteAccount = async (): Promise<boolean> => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${apiUrl}/api/auth/delete`, {
+        method: "POST",
+        credentials: "include",
+      });
 
-			if (!response.ok) {
-				throw new Error("Bad Response");
-			}
+      if (!response.ok) {
+        throw new Error("Bad Response");
+      }
 
-			setIsLoading(false);
-			return true;
-		} catch (error) {
-			console.error("Error while deleting account: ", error);
-			return false;
-		} finally {
-			setIsLoading(false);
-		}
-	};
+      setIsLoading(false);
+      return true;
+    } catch (error) {
+      console.error("Error while deleting account: ", error);
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	return {
-		enableDeletion,
-		isLoading,
-		confirmationString,
-		setConfirmationString,
-		deleteAccount,
-	};
+  return {
+    enableDeletion,
+    isLoading,
+    confirmationString,
+    setConfirmationString,
+    deleteAccount,
+  };
 };

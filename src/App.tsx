@@ -5,17 +5,17 @@ import Footer from "./components/footer/Footer";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-	return (
-		<AuthProvider>
-			<div className={styles.app}>
-				<NavBar />
-				<main>
-					<Outlet />
-				</main>
-				<Footer />
-			</div>
-		</AuthProvider>
-	);
+  return (
+    <AuthProvider>
+      <div className={styles.app}>
+        <NavBar />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </AuthProvider>
+  );
 }
 
 export default App;

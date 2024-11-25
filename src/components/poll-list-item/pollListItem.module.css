@@ -1,13 +1,13 @@
 .container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .title {
-	align-self: center;
-	font-size: medium;
-	font-weight: bold;
-	padding-right: 1rem;
+  align-self: center;
+  font-size: medium;
+  font-weight: bold;
+  padding-right: 1rem;
 }

@@ -4,64 +4,64 @@ import { MyPollsResponse } from "../types/apiTypes";
 import { Poll } from "../types/pollTypes";
 
 export const useMyPolls = () => {
-	const [polls, setPolls] = useState<Poll[]>([]);
-	const [thereAreMorePolls, setThereAreMorePolls] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [page, setPage] = useState(1);
+  const [polls, setPolls] = useState<Poll[]>([]);
+  const [thereAreMorePolls, setThereAreMorePolls] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
-	useEffect(() => {
-		const fetchMyPolls = async () => {
-			try {
-				setIsLoading(true);
-				const response = await fetch(
-					`${apiUrl}/api/polls/my-polls?page=${page}`,
-					{
-						method: "GET",
-						credentials: "include",
-					}
-				);
+  useEffect(() => {
+    const fetchMyPolls = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          `${apiUrl}/api/polls/my-polls?page=${page}`,
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
 
-				if (!response.ok) {
-					throw new Error("Bad Response");
-				}
+        if (!response.ok) {
+          throw new Error("Bad Response");
+        }
 
-				const responseData = (await response.json()) as MyPollsResponse;
+        const responseData = (await response.json()) as MyPollsResponse;
 
-				console.log(responseData);
+        console.log(responseData);
 
-				if (page > 1) {
-					setPolls((prev) => [...prev, ...responseData.polls]);
-				} else {
-					setPolls(responseData.polls);
-				}
-				setThereAreMorePolls(responseData.thereAreMorePolls);
-			} catch (error) {
-				console.error("Error while fetching user polls: ", error);
-			} finally {
-				setIsLoading(false);
-			}
-		};
+        if (page > 1) {
+          setPolls((prev) => [...prev, ...responseData.polls]);
+        } else {
+          setPolls(responseData.polls);
+        }
+        setThereAreMorePolls(responseData.thereAreMorePolls);
+      } catch (error) {
+        console.error("Error while fetching user polls: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-		fetchMyPolls();
-	}, [page]);
+    fetchMyPolls();
+  }, [page]);
 
-	const loadMorePolls = () => {
-		if (thereAreMorePolls) {
-			setPage((prev) => prev + 1);
-		}
-	};
+  const loadMorePolls = () => {
+    if (thereAreMorePolls) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
-	const removeDeletedPoll = (idOfDeletedPoll: string) => {
-		setPolls((prev) => {
-			return prev.filter((poll) => poll._id !== idOfDeletedPoll);
-		});
-	};
+  const removeDeletedPoll = (idOfDeletedPoll: string) => {
+    setPolls((prev) => {
+      return prev.filter((poll) => poll._id !== idOfDeletedPoll);
+    });
+  };
 
-	return {
-		polls,
-		isLoading,
-		thereAreMorePolls,
-		loadMorePolls,
-		removeDeletedPoll,
-	};
+  return {
+    polls,
+    isLoading,
+    thereAreMorePolls,
+    loadMorePolls,
+    removeDeletedPoll,
+  };
 };
