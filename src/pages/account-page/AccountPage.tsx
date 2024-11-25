@@ -7,32 +7,32 @@ import styles from "./accountPage.module.css";
 import { useEffect } from "react";
 
 const AccountPage = () => {
-	const { checkAuthentication } = useAuthContext();
-	const navigate = useNavigate();
+  const { checkAuthentication } = useAuthContext();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		/** Navigate to home if the user is not authenticated. */
-		const checkUserIsAuthenticated = async () => {
-			const userIsAuthenticated = await checkAuthentication();
-			if (!userIsAuthenticated) {
-				navigate("/login");
-			}
-		};
-		checkUserIsAuthenticated();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+  useEffect(() => {
+    /** Navigate to home if the user is not authenticated. */
+    const checkUserIsAuthenticated = async () => {
+      const userIsAuthenticated = await checkAuthentication();
+      if (!userIsAuthenticated) {
+        navigate("/login");
+      }
+    };
+    checkUserIsAuthenticated();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-	return (
-		<div className={styles.pageContainer}>
-			<AccountSidebar />
-			<div className={styles.content}>
-				<Routes>
-					<Route path="my-polls" element={<MyPollsPage />} />
-					<Route path="delete" element={<DeleteAccountPage />} />
-				</Routes>
-			</div>
-		</div>
-	);
+  return (
+    <div className={styles.pageContainer}>
+      <AccountSidebar />
+      <div className={styles.content}>
+        <Routes>
+          <Route path="my-polls" element={<MyPollsPage />} />
+          <Route path="delete" element={<DeleteAccountPage />} />
+        </Routes>
+      </div>
+    </div>
+  );
 };
 
 export default AccountPage;

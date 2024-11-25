@@ -1,10 +1,10 @@
 .app {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	min-height: 100vh;
+  min-height: 100vh;
 }
 
 .app main {
-	flex: 1;
+  flex: 1;
 }

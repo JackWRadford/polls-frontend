@@ -1,38 +1,38 @@
 .switchContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .label {
-	cursor: pointer;
-	width: 100%;
-	margin-left: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  margin-left: 0.5rem;
 }
 
 .input {
-	position: relative;
-	display: flex;
-	width: 54px;
-	height: calc(var(--switch-thumb-size) + (var(--switch-padding) * 2) + 2px);
-	padding: var(--switch-padding);
-	border: 1px solid var(--border-color);
-	border-radius: 24px;
-	cursor: pointer;
-	appearance: none;
+  position: relative;
+  display: flex;
+  width: 54px;
+  height: calc(var(--switch-thumb-size) + (var(--switch-padding) * 2) + 2px);
+  padding: var(--switch-padding);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  cursor: pointer;
+  appearance: none;
 }
 
 .input::before {
-	content: "";
-	position: absolute;
-	border-radius: 50%;
-	height: var(--switch-thumb-size);
-	width: var(--switch-thumb-size);
-	background-color: var(--primary-color);
-	left: var(--switch-padding);
-	transition: left 0.1s;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  height: var(--switch-thumb-size);
+  width: var(--switch-thumb-size);
+  background-color: var(--primary-color);
+  left: var(--switch-padding);
+  transition: left 0.1s;
 }
 
 .input:checked::before {
-	left: calc(100% - (var(--switch-thumb-size) + var(--switch-padding)));
+  left: calc(100% - (var(--switch-thumb-size) + var(--switch-padding)));
 }
