@@ -1,54 +1,54 @@
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-	color-scheme: light dark;
+  color-scheme: light dark;
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-	--max-content-width: 1280px;
-	--max-poll-width: 40rem;
+  --max-content-width: 1280px;
+  --max-poll-width: 40rem;
 
-	/* Switch constants */
-	--switch-thumb-size: 20px;
-	--switch-padding: 3px;
+  /* Switch constants */
+  --switch-thumb-size: 20px;
+  --switch-padding: 3px;
 
-	/* colors */
-	--primary-color: white;
-	--on-primary-color: black;
-	--secondary-color: gray;
-	--background-color: rgb(21, 21, 21);
-	--background-alt-color: rgb(0, 0, 0);
-	--foreground-color: rgb(44, 44, 44);
-	--border-color: rgb(68, 68, 68);
-	--accent-color: blue;
-	--text-color: white;
-	--success-color: green;
-	--error-color: red;
-	--error-color-rgb: 255, 0, 0;
+  /* colors */
+  --primary-color: white;
+  --on-primary-color: black;
+  --secondary-color: gray;
+  --background-color: rgb(21, 21, 21);
+  --background-alt-color: rgb(0, 0, 0);
+  --foreground-color: rgb(44, 44, 44);
+  --border-color: rgb(68, 68, 68);
+  --accent-color: blue;
+  --text-color: white;
+  --success-color: green;
+  --error-color: red;
+  --error-color-rgb: 255, 0, 0;
 
-	color: rgba(255, 255, 255, 0.87);
-	background-color: var(--background-alt-color);
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--background-alt-color);
 }
 
 * {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	min-height: 100vh;
+  margin: 0;
+  min-height: 100vh;
 }
 
 /* Used to block scrolling when the dialog is open in Dialog.tsx */
 body.model-open {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 blockquote,
@@ -64,49 +64,49 @@ hr,
 figure,
 p,
 pre {
-	margin: 0;
+  margin: 0;
 }
 
 h1 {
-	line-height: 1.2;
+  line-height: 1.2;
 }
 
 a {
-	color: var(--primary-color);
-	line-height: normal;
-	text-decoration: none;
+  color: var(--primary-color);
+  line-height: normal;
+  text-decoration: none;
 }
 
 ul,
 ol {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 button,
 label,
 input {
-	font-size: 0.9rem;
-	font-weight: 500;
-	font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
 }
 
 @media (prefers-color-scheme: light) {
-	:root {
-		--primary-color: black;
-		--on-primary-color: white;
-		--secondary-color: rgb(107, 107, 107);
-		--background-color: white;
-		--background-alt-color: rgb(247, 247, 247);
-		--foreground-color: white;
-		--border-color: lightgrey;
-		--accent-color: blue;
-		--text-color: black;
-		--success-color: green;
-		--error-color: red;
-		--error-color-rgb: 255, 0, 0;
+  :root {
+    --primary-color: black;
+    --on-primary-color: white;
+    --secondary-color: rgb(107, 107, 107);
+    --background-color: white;
+    --background-alt-color: rgb(247, 247, 247);
+    --foreground-color: white;
+    --border-color: lightgrey;
+    --accent-color: blue;
+    --text-color: black;
+    --success-color: green;
+    --error-color: red;
+    --error-color-rgb: 255, 0, 0;
 
-		color: #213547;
-		background-color: var(--background-alt-color);
-	}
+    color: #213547;
+    background-color: var(--background-alt-color);
+  }
 }

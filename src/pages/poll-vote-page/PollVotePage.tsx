@@ -9,33 +9,33 @@ import { usePoll } from "../../hooks/usePoll";
 import styles from "./pollVotePage.module.css";
 
 const PollVotePage = () => {
-	const { id } = useParams();
-	const { poll, isLoading } = usePoll(id);
+  const { id } = useParams();
+  const { poll, isLoading } = usePoll(id);
 
-	const documentTitle = useMemo(
-		() => `${poll?.title ?? "Poll Not Found"} - Vote - Poll Maker`,
-		[poll?.title]
-	);
+  const documentTitle = useMemo(
+    () => `${poll?.title ?? "Poll Not Found"} - Vote - Poll Maker`,
+    [poll?.title],
+  );
 
-	return (
-		<div className={styles.container}>
-			<Helmet>
-				<title>{documentTitle}</title>
-			</Helmet>
-			{!isLoading && poll && (
-				<>
-					<PollVoteCard poll={poll} />
-					<ShareCard label={"Share the poll with this URL!"} />
-				</>
-			)}
-			{isLoading && <CardLoadingIndicator />}
-			{!isLoading && !poll && (
-				<Card>
-					<p>Poll Not Found</p>
-				</Card>
-			)}
-		</div>
-	);
+  return (
+    <div className={styles.container}>
+      <Helmet>
+        <title>{documentTitle}</title>
+      </Helmet>
+      {!isLoading && poll && (
+        <>
+          <PollVoteCard poll={poll} />
+          <ShareCard label={"Share the poll with this URL!"} />
+        </>
+      )}
+      {isLoading && <CardLoadingIndicator />}
+      {!isLoading && !poll && (
+        <Card>
+          <p>Poll Not Found</p>
+        </Card>
+      )}
+    </div>
+  );
 };
 
 export default PollVotePage;

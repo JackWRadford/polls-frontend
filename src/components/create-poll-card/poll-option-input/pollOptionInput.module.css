@@ -1,9 +1,9 @@
 .container {
-	display: flex;
-	gap: 0.4rem;
+  display: flex;
+  gap: 0.4rem;
 }
 
 .container button {
-	color: var(--secondary-color);
-	padding: 0.4rem;
+  color: var(--secondary-color);
+  padding: 0.4rem;
 }
